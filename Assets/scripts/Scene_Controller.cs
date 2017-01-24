@@ -23,7 +23,7 @@ public class Scene_Controller : MonoBehaviour {
 
         } 
         scene = new Scene();
-        //scene.Load("test_scene");
+        scene.Load("test_scene");
 	}
 	
 	// Update is called once per frame
