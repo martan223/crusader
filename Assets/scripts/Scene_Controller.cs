@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.scripts;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +7,8 @@ public class Scene_Controller : MonoBehaviour {
 
     public static Item[] ItemsList;
     public static Scene scene;
+    public static bool transition;
+    public ScreenTransition scrtransition;
 	// Use this for initialization
 	void Start () {
         string[] q = System.IO.File.ReadAllLines(@"Assets/saves/items_list.csv");
@@ -23,11 +26,16 @@ public class Scene_Controller : MonoBehaviour {
 
         } 
         scene = new Scene();
-        scene.Load("test_scene");
+        scrtransition = new FadeIn(10f, 0.1F, "test_scene");
+        transition = true;
+        //scene.Load("test_scene");
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if(transition)
+        {
+            scrtransition.Update();
+        }
 	}
 }
