@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Xml.Serialization;
 
-public class GameItem {
+[XmlInclude(typeof(NextScene))]
+public class GameItem{
     public Vector3 position;
     public Vector3 scale;
     public string Name;
+
     public GameItem() { }
     public GameItem(GameObject go)
     {
@@ -15,10 +18,10 @@ public class GameItem {
         Name = go.name;
     }
 
-    public void Load(Item[] ItemsList)
+    public virtual void Load(Item[] ItemsList)
     {
         GameObject.Instantiate(Resources.Load(Array.Find(ItemsList, (p => p.texture == Name.Split(';')[0])).texture), position, Quaternion.identity).name = Name;
-        
+        //Go.name = Name;
     }
     public void Start()
     {

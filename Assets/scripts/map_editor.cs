@@ -3,39 +3,28 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine.UI;
+using System.IO;
 
 public class map_editor : MonoBehaviour {
 
-    public Item[] ItemsList;
+    public Item[] ItemsList { get {return Scene_Controller.ItemsList;}}
     float oneTile { get { return 0.64f/*GameObject.Find("Main Camera").GetComponent<onclick>().oneTile; }*/; } set { }/*{ GameObject.Find("Main Camera").GetComponent<onclick>().oneTile = value; }*/ }
     public List<GameObject> ItemsMap;
     public bool show = false;
     public RaycastHit2D hit;
     public GameObject MOVING;
     Vector2 worldPoint;
-    public Material blankmaterial;
+    Material blankmaterial;
     Scene scene;
+    public string path;
     // Use this for initialization
 	void Start() 
     {
         scene = Scene_Controller.scene;
+        path = "test_scene";
         //DESERIALIZE
         
         //READ TILES FROM TABLE
-            string[] q = System.IO.File.ReadAllLines(@"Assets/saves/items_list.csv");
-            ItemsList = new Item[q.Length - 1];
-            for (int i = 1; i < q.Length; i++)
-            {
-                string s = q[i];
-                ItemsList[i - 1] = new Item();
-                ItemsList[i - 1].name = s.Split(';')[1];
-                ItemsList[i - 1].texture = s.Split(';')[1];
-                ItemsList[i - 1].Layer = int.Parse(s.Split(';')[3]);
-                s = s.Split(';')[2];
-                if (s == 1.ToString())
-                    ItemsList[i - 1].movable = true;
-
-            } 
             //INSTANTIATIZE
             scene.Layer1 = new List<GameItem>();
             scene.Layer2 = new List<GameItem>();
@@ -99,21 +88,19 @@ public class map_editor : MonoBehaviour {
             {
                 Destroy(GameObject.Find(scene.Layer3[i].Name));
             }
-            scene.Layer1 = new List<GameItem>();
-            scene.Layer2 = new List<GameItem>();
-            scene.Layer3 = new List<GameItem>();
+            scene.Layer1 = scene.Layer2 = scene.Layer3 = new List<GameItem>();
             XmlManager<List<GameItem>> xm = new XmlManager<List<GameItem>>();
-            scene.Layer1 = xm.Load("Assets/saves/layer1.xml");
+            scene.Layer1 = xm.Load("Assets/saves/" + path + "/layer1.xml");
             for (int i = 0; i < scene.Layer1.Count; i++)
             {
                 scene.Layer1[i].Load(ItemsList);
             }
-            scene.Layer2 = xm.Load("Assets/saves/layer2.xml");
+            scene.Layer2 = xm.Load("Assets/saves/" + path + "/layer2.xml");
             for (int i = 0; i < scene.Layer2.Count; i++)
             {
                 scene.Layer2[i].Load(ItemsList);
             }
-            scene.Layer3 = xm.Load("Assets/saves/layer3.xml");
+            scene.Layer3 = xm.Load("Assets/saves/" + path + "/layer3.xml");
             for (int i = 0; i < scene.Layer3.Count; i++)
             {
                 scene.Layer3[i].Load(ItemsList);
@@ -122,10 +109,12 @@ public class map_editor : MonoBehaviour {
         //SAVE F5
         if (Input.GetKeyDown(KeyCode.F5))
         {
+            if (!Directory.Exists("Assets/saves/" + path))
+                Directory.CreateDirectory("Assets/saves/" + path);
             XmlManager<List<GameItem>> xm = new XmlManager<List<GameItem>>();
-            xm.Save("Assets/saves/layer1.xml", scene.Layer1);
-            xm.Save("Assets/saves/layer2.xml",scene.Layer2);
-            xm.Save("Assets/saves/layer3.xml", scene.Layer3);
+            xm.Save("Assets/saves/" + path + "/layer1.xml", scene.Layer1);
+            xm.Save("Assets/saves/" + path + "/layer2.xml", scene.Layer2);
+            xm.Save("Assets/saves/" + path + "/layer3.xml", scene.Layer3);
 
         }
 
@@ -208,7 +197,10 @@ public class map_editor : MonoBehaviour {
                                 GameObject.Find(nam).transform.position = new Vector3(worldPoint.x - worldPoint.x % oneTile + oneTile / 2, worldPoint.y - worldPoint.y % oneTile + oneTile / 2, 2);
                                 GameObject.Find(nam).transform.localScale = new Vector3(1, 1, 1);
                                 GameObject.Find(nam).tag = "Untagged";
-                                scene.Layer2.Add(new GameItem(GameObject.Find(nam)));
+                                if (nam.Contains("doors"))
+                                    scene.Layer2.Add(new NextScene(GameObject.Find(nam),path));
+                                else
+                                    scene.Layer2.Add(new GameItem(GameObject.Find(nam)));
                                 Debug.Log("layer2");
                             }
                         }

@@ -10,6 +10,8 @@ public class Scene : MonoBehaviour {
     Item[] ItemsList { get{return Scene_Controller.ItemsList;}}
 	// Use this for initialization
 	public void Load (string path) {
+            if (Layer1 != null)
+                Delete();
             Layer1 = Layer2 = Layer3 = new List<GameItem>();
             XmlManager<List<GameItem>> xm = new XmlManager<List<GameItem>>();
             Layer1 = xm.Load("Assets/saves/" + path + "/layer1.xml");
@@ -28,7 +30,30 @@ public class Scene : MonoBehaviour {
                 Layer3[i].Load(ItemsList);
             }
 	}
-	
+	public void Delete()
+    {
+        if (Layer1.Count > 0)
+        {
+            for (int i = 0; i < Layer1.Count; i++)
+            {
+                Destroy(GameObject.Find(Layer1[i].Name));
+            }
+        }
+        if (Layer2.Count > 0)
+        {
+            for (int i = 0; i < Layer2.Count; i++)
+            {
+                Destroy(GameObject.Find(Layer2[i].Name));
+            }
+        }
+        if (Layer3.Count > 0)
+        {
+            for (int i = 0; i < Layer3.Count; i++)
+            {
+                Destroy(GameObject.Find(Layer3[i].Name));
+            }
+        }
+    }
 	// Update is called once per frame
 	void Update () {
 		
