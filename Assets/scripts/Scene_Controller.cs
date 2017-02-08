@@ -20,14 +20,15 @@ public class Scene_Controller : MonoBehaviour {
             ItemsList[i - 1].name = s.Split(';')[1];
             ItemsList[i - 1].texture = s.Split(';')[1];
             ItemsList[i - 1].Layer = int.Parse(s.Split(';')[3]);
+            ItemsList[i - 1].colliding = bool.Parse(s.Split(';')[4]);
             s = s.Split(';')[2];
             if (s == 1.ToString())
                 ItemsList[i - 1].movable = true;
 
         } 
         scene = new Scene();
-        //scrtransition = new FadeOut(10f, 0.1F, "test_scene",true);
-        //transition = true;
+        scrtransition = new FadeOut(10f, 0.1F, "test_scene",true);
+        transition = true;
 	}
 	
 	// Update is called once per frame

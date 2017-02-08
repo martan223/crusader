@@ -21,6 +21,10 @@ public class GameItem{
     public virtual void Load(Item[] ItemsList)
     {
         GameObject.Instantiate(Resources.Load(Array.Find(ItemsList, (p => p.texture == Name.Split(';')[0])).texture), position, Quaternion.identity).name = Name;
+        if (Array.Find(ItemsList, (p => p.texture == Name.Split(';')[0])).colliding)
+            GameObject.Find(Name).AddComponent<Collider2D>();
+        else
+            UnityEngine.Object.Destroy(GameObject.Find(Name).GetComponent<Collider2D>());
         //Go.name = Name;
     }
     public void Start()

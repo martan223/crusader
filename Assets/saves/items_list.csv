@@ -1,7 +1,7 @@
-name;texture;movable;layer
-test;mars;1;1
-black;mars;1;1
-pozadi;grass;1;1
-travka;trava;0;2
-dvere_hore;doors_2;0;2
-dvere_dole;doors_1;0;2
+name;texture;movable;layer;colliding
+test;mars;1;1;true
+black;mars;1;1;true
+pozadi;grass;1;1;true
+travka;trava;0;2;false
+dvere_hore;doors_2;0;2;false
+dvere_dole;doors_1;0;2;false

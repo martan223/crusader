@@ -164,7 +164,7 @@ public class map_editor : MonoBehaviour {
             GameObject.Find("Main Camera").transform.position = new Vector3(cam.x - 0.1f, cam.y, -10);
         if (Input.GetKey(KeyCode.D))
             GameObject.Find("Main Camera").transform.position = new Vector3(cam.x + 0.1f, cam.y, -10);
-
+        GameObject.Find("Main Camera").GetComponent<GUITexture>().pixelInset = new Rect(cam*-1150, new Vector2(1000, 1000));
         //PICK TILE
         if (hit.collider != null && hit.collider.tag == "editortool" && Input.GetMouseButton(0))
         {

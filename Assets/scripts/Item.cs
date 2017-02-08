@@ -4,7 +4,7 @@ using System.Collections;
 public class Item : MonoBehaviour {
 
     //public GameObject Item;
-    public bool InInventory;
+    public bool colliding;
     public string name;
     public string texture;
     public bool movable;
