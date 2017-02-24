@@ -19,7 +19,7 @@ namespace Assets.scripts
         public override void Update()
         {
             Remaining -= Speed;
-            Debug.Log(Remaining/Duration);
+            //Debug.Log(Remaining/Duration);
             if (Remaining > 0.5f)
                 GameObject.Find("Main Camera").GetComponent<GUITexture>().color = new Color(0, 0, 0, Remaining / Duration);
             else

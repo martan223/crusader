@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfGameItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <GameItem>
+    <position>
+      <x>1.5999999</x>
+      <y>0.32</y>
+      <z>2</z>
+    </position>
+    <scale>
+      <x>1</x>
+      <y>1</y>
+      <z>1</z>
+    </scale>
+    <Name>trava;(3.0, 1.0)</Name>
+  </GameItem>
+  <GameItem>
+    <position>
+      <x>1.5999999</x>
+      <y>0.96</y>
+      <z>2</z>
+    </position>
+    <scale>
+      <x>1</x>
+      <y>1</y>
+      <z>1</z>
+    </scale>
+    <Name>trava;(3.0, 2.0)</Name>
+  </GameItem>
+  <GameItem>
+    <position>
+      <x>7.35999966</x>
+      <y>0.32</y>
+      <z>2</z>
+    </position>
+    <scale>
+      <x>1</x>
+      <y>1</y>
+      <z>1</z>
+    </scale>
+    <Name>doors_1;(12.0, 1.0)</Name>
+  </GameItem>
+  <GameItem>
+    <position>
+      <x>7.35999966</x>
+      <y>0.96</y>
+      <z>2</z>
+    </position>
+    <scale>
+      <x>1</x>
+      <y>1</y>
+      <z>1</z>
+    </scale>
+    <Name>doors_2;(12.0, 2.0)</Name>
+  </GameItem>
+</ArrayOfGameItem>

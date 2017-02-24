@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfGameItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <GameItem>
+    <position>
+      <x>2.24</x>
+      <y>0.32</y>
+      <z>3</z>
+    </position>
+    <scale>
+      <x>1</x>
+      <y>1</y>
+      <z>1</z>
+    </scale>
+    <Name>grass;(4.0, 1.0)</Name>
+  </GameItem>
+  <GameItem>
+    <position>
+      <x>2.24</x>
+      <y>0.96</y>
+      <z>3</z>
+    </position>
+    <scale>
+      <x>1</x>
+      <y>1</y>
+      <z>1</z>
+    </scale>
+    <Name>grass;(4.0, 2.0)</Name>
+  </GameItem>
+  <GameItem>
+    <position>
+      <x>2.87999988</x>
+      <y>1.5999999</y>
+      <z>3</z>
+    </position>
+    <scale>
+      <x>1</x>
+      <y>1</y>
+      <z>1</z>
+    </scale>
+    <Name>grass;(5.0, 3.0)</Name>
+  </GameItem>
+  <GameItem>
+    <position>
+      <x>3.52</x>
+      <y>0.96</y>
+      <z>3</z>
+    </position>
+    <scale>
+      <x>1</x>
+      <y>1</y>
+      <z>1</z>
+    </scale>
+    <Name>grass;(6.0, 2.0)</Name>
+  </GameItem>
+  <GameItem>
+    <position>
+      <x>3.52</x>
+      <y>0.32</y>
+      <z>3</z>
+    </position>
+    <scale>
+      <x>1</x>
+      <y>1</y>
+      <z>1</z>
+    </scale>
+    <Name>grass;(6.0, 1.0)</Name>
+  </GameItem>
+  <GameItem>
+    <position>
+      <x>-0.96</x>
+      <y>2.24</y>
+      <z>3</z>
+    </position>
+    <scale>
+      <x>1</x>
+      <y>1</y>
+      <z>1</z>
+    </scale>
+    <Name>grass;(-1.0, 4.0)</Name>
+  </GameItem>
+</ArrayOfGameItem>
