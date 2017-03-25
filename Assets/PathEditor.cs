@@ -25,6 +25,8 @@ public class PathEditor : MonoBehaviour {
         positionText.GetComponent<Text>();
         
 	}
+
+    //save path to file
 	void SavePath()
     {
         string path = GameObject.Find("Path").GetComponent<InputField>().text;
@@ -38,13 +40,16 @@ public class PathEditor : MonoBehaviour {
         Debug.Log("saved to: " + path);
     }
 
+    //loads path from file
     void LoadPath()
     {
+        //clear workspace
         for (int i = 1; i < Stops.Count + 1; i++)
         {
             Destroy(GameObject.Find("Dot" + i));
         }
         Stops.Clear();
+        //add dots with lines
         string[] files = File.ReadAllLines("Assets/saves/action_scripts/" + GameObject.Find("Path").GetComponent<InputField>().text + ".csv");
         for (int i = 0; i < files.Length; i++)
         {
