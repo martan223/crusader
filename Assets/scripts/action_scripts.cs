@@ -6,7 +6,7 @@ using System.IO;
 public class action_scripts : MonoBehaviour {
 
     public string[] actions;
-    public List<Vector2[]> positions;
+    public List<string[]> parameters;
 	void Start () {
 		
 	}
@@ -19,18 +19,22 @@ public class action_scripts : MonoBehaviour {
     {
         string[] files = File.ReadAllLines(path);
         actions = new string[files.Length];
-        positions = new List<Vector2[]>();
+        parameters = new List<string[]>();
         for (int i = 0; i < files.Length; i++)
         {
             string[] s = files[i].Split(';');
             actions[i] = s[0];
-            Vector2[] v = new Vector2[s.Length - 1];
-            for (int p = 0; p < s.Length - 1; p++)
+            if (actions[i].Contains("#"))
             {
-                v[p] = new Vector2(float.Parse(s[p+1].Split(':')[0]),float.Parse(s[p+1].Split(':')[1]));
+                string[] q = new string[s.Length-1];
+                for (int w = 0; w < s.Length-2; w++)
+                {
+                    q[w] = s[w + 1];
+                }
+                    parameters.Add(q);
             }
-            positions.Add(v);
-
+            else 
+                parameters.Add(new string[0]);
         }
     }
 }
