@@ -26,11 +26,14 @@ public class person : MonoBehaviour {
         act();
 	}
 
+
     public void MoveOnPath(string path)
     {
         FileManager fm = new FileManager();
         Vector2[] v = fm.LoadPositions(path);
     }
+
+    //switch between actions
     public void act()
     {
         if(action_number < acs.actions.Length)
@@ -53,6 +56,8 @@ public class person : MonoBehaviour {
             }
         }
     }
+
+
     public void walkStraight(string path)
     {
         if(initialize)
