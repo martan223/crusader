@@ -69,15 +69,15 @@ public class person : MonoBehaviour {
                 string[] s = files[i].Split(';');
                 Vector2 v = new UnityEngine.Vector2(float.Parse(s[0]),float.Parse(s[1]));
                 ziel[i] = v;
-                Debug.Log("#"+v.x+v.y);
+                //Debug.Log("#"+v.x+v.y);
             }
             
             zielNumber = 0;
             float totalsteps = Mathf.CeilToInt(Mathf.Sqrt((this.transform.position.x - ziel[zielNumber].x) * (this.transform.position.x - ziel[zielNumber].x) + (this.transform.position.y - ziel[zielNumber].y) * (this.transform.position.y - ziel[zielNumber].y)) / speed);
             step = new Vector2(((this.transform.position.x + ziel[zielNumber].x) / speed) / totalsteps * speed, ((this.transform.position.y + ziel[zielNumber].y) / speed) / totalsteps * speed);
-            Debug.Log(totalsteps);
-            Debug.Log(Mathf.CeilToInt((this.transform.position.x + ziel[zielNumber].x) / speed));
-            Debug.Log(new Vector2(Mathf.CeilToInt((this.transform.position.x + ziel[zielNumber].x) / speed) / totalsteps * speed, Mathf.CeilToInt((this.transform.position.y + ziel[zielNumber].y) / speed) / totalsteps * speed));
+            //Debug.Log(totalsteps);
+            //Debug.Log(Mathf.CeilToInt((this.transform.position.x + ziel[zielNumber].x) / speed));
+            //Debug.Log(new Vector2(Mathf.CeilToInt((this.transform.position.x + ziel[zielNumber].x) / speed) / totalsteps * speed, Mathf.CeilToInt((this.transform.position.y + ziel[zielNumber].y) / speed) / totalsteps * speed));
             initialize = false;
         }
         if(ziel[zielNumber] == (Vector2)this.transform.position && zielNumber+1 < ziel.Length)
