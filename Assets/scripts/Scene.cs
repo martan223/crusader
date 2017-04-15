@@ -9,6 +9,12 @@ public class Scene : MonoBehaviour {
     public List<GameItem> Layer3;
     Item[] ItemsList { get{return Scene_Controller.ItemsList;}}
 	// Use this for initialization
+    public Scene()
+    {
+            Layer1 = new List<GameItem>();
+            Layer2 = new List<GameItem>();
+            Layer3 = new List<GameItem>();
+    }
 	public void Load (string path) {
             if (Layer1 != null)
                 Delete();

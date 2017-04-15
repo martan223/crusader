@@ -7,10 +7,11 @@ namespace Assets.scripts
 {
     class DoorsEvent : MonoBehaviour
     {
-        string nextScene;
+        public string nextScene;
         void OnTriggerEnter2D(Collider2D col)
         {
             NextScene ns = Scene_Controller.scene.Layer2.Find(p => p.Name == gameObject.name)as NextScene;
+            Debug.Log(ns.nextScene);
             nextScene = ns.nextScene;
             Scene_Controller.scrtransition = new FadeOut(10f, 0.1F, nextScene, true);
             Scene_Controller.transition = true;

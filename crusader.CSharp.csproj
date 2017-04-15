@@ -96,16 +96,34 @@
     <Compile Include="Assets\scripts\person.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\saves\ada\layer1.xml" />
+    <None Include="Assets\saves\ada\layer2.xml" />
+    <None Include="Assets\saves\ada\layer3.xml" />
     <None Include="Assets\saves\layer.xml" />
     <None Include="Assets\saves\new_scene\layer1.xml" />
     <None Include="Assets\saves\new_scene\layer2.xml" />
     <None Include="Assets\saves\new_scene\layer3.xml" />
+    <None Include="Assets\saves\qwertz\layer1.xml" />
+    <None Include="Assets\saves\qwertz\layer2.xml" />
+    <None Include="Assets\saves\qwertz\layer3.xml" />
+    <None Include="Assets\saves\rrr\layer1.xml" />
+    <None Include="Assets\saves\rrr\layer2.xml" />
+    <None Include="Assets\saves\rrr\layer3.xml" />
+    <None Include="Assets\saves\shop\layer1.xml" />
+    <None Include="Assets\saves\shop\layer2.xml" />
+    <None Include="Assets\saves\shop\layer3.xml" />
     <None Include="Assets\saves\test_s\layer1.xml" />
     <None Include="Assets\saves\test_s\layer2.xml" />
     <None Include="Assets\saves\test_s\layer3.xml" />
     <None Include="Assets\saves\test_scene\layer1.xml" />
     <None Include="Assets\saves\test_scene\layer2.xml" />
     <None Include="Assets\saves\test_scene\layer3.xml" />
+    <None Include="Assets\saves\ttt\layer1.xml" />
+    <None Include="Assets\saves\ttt\layer2.xml" />
+    <None Include="Assets\saves\ttt\layer3.xml" />
+    <None Include="Assets\saves\vvvvv\layer1.xml" />
+    <None Include="Assets\saves\vvvvv\layer2.xml" />
+    <None Include="Assets\saves\vvvvv\layer3.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2013\UnityVS.CSharp.targets" />
 </Project>

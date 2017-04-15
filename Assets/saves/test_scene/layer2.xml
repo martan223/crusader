@@ -2,8 +2,99 @@
 <ArrayOfGameItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <GameItem>
     <position>
+      <x>1.5999999</x>
+      <y>3.52</y>
+      <z>2</z>
+    </position>
+    <scale>
+      <x>1</x>
+      <y>1</y>
+      <z>1</z>
+    </scale>
+    <Name>House1;(3.0, 6.0)</Name>
+  </GameItem>
+  <GameItem>
+    <position>
+      <x>2.24</x>
+      <y>3.52</y>
+      <z>2</z>
+    </position>
+    <scale>
+      <x>1</x>
+      <y>1</y>
+      <z>1</z>
+    </scale>
+    <Name>House2;(4.0, 6.0)</Name>
+  </GameItem>
+  <GameItem>
+    <position>
+      <x>1.5999999</x>
+      <y>2.87999988</y>
+      <z>2</z>
+    </position>
+    <scale>
+      <x>1</x>
+      <y>1</y>
+      <z>1</z>
+    </scale>
+    <Name>House4;(3.0, 5.0)</Name>
+  </GameItem>
+  <GameItem>
+    <position>
+      <x>2.24</x>
+      <y>2.87999988</y>
+      <z>2</z>
+    </position>
+    <scale>
+      <x>1</x>
+      <y>1</y>
+      <z>1</z>
+    </scale>
+    <Name>House5;(4.0, 5.0)</Name>
+  </GameItem>
+  <GameItem>
+    <position>
+      <x>1.5999999</x>
+      <y>2.24</y>
+      <z>2</z>
+    </position>
+    <scale>
+      <x>1</x>
+      <y>1</y>
+      <z>1</z>
+    </scale>
+    <Name>House7;(3.0, 4.0)</Name>
+  </GameItem>
+  <GameItem>
+    <position>
+      <x>2.24</x>
+      <y>2.24</y>
+      <z>2</z>
+    </position>
+    <scale>
+      <x>1</x>
+      <y>1</y>
+      <z>1</z>
+    </scale>
+    <Name>doors_2;(4.0, 4.0)</Name>
+  </GameItem>
+  <GameItem>
+    <position>
+      <x>1.5999999</x>
+      <y>1.5999999</y>
+      <z>2</z>
+    </position>
+    <scale>
+      <x>1</x>
+      <y>1</y>
+      <z>1</z>
+    </scale>
+    <Name>House10;(3.0, 3.0)</Name>
+  </GameItem>
+  <GameItem>
+    <position>
       <x>2.87999988</x>
-      <y>0.96</y>
+      <y>3.52</y>
       <z>2</z>
     </position>
     <scale>
@@ -11,12 +102,12 @@
       <y>1</y>
       <z>1</z>
     </scale>
-    <Name>doors_2;(5.0, 2.0)</Name>
+    <Name>House2;(5.0, 6.0)</Name>
   </GameItem>
-  <GameItem xsi:type="NextScene">
+  <GameItem>
     <position>
       <x>2.87999988</x>
-      <y>0.32</y>
+      <y>2.87999988</y>
       <z>2</z>
     </position>
     <scale>
@@ -24,13 +115,12 @@
       <y>1</y>
       <z>1</z>
     </scale>
-    <Name>doors_1;(5.0, 1.0)</Name>
-    <nextScene>test_scene</nextScene>
+    <Name>House5;(5.0, 5.0)</Name>
   </GameItem>
   <GameItem>
     <position>
-      <x>6.72</x>
-      <y>6.72</y>
+      <x>3.52</x>
+      <y>2.87999988</y>
       <z>2</z>
     </position>
     <scale>
@@ -38,12 +128,12 @@
       <y>1</y>
       <z>1</z>
     </scale>
-    <Name>trava;(11.0, 11.0)</Name>
+    <Name>House6;(6.0, 5.0)</Name>
   </GameItem>
   <GameItem>
     <position>
-      <x>6.72</x>
-      <y>6.08</y>
+      <x>3.52</x>
+      <y>3.52</y>
       <z>2</z>
     </position>
     <scale>
@@ -51,12 +141,12 @@
       <y>1</y>
       <z>1</z>
     </scale>
-    <Name>trava;(11.0, 10.0)</Name>
+    <Name>House3;(6.0, 6.0)</Name>
   </GameItem>
   <GameItem>
     <position>
-      <x>6.72</x>
-      <y>5.44</y>
+      <x>2.87999988</x>
+      <y>2.24</y>
       <z>2</z>
     </position>
     <scale>
@@ -64,12 +154,12 @@
       <y>1</y>
       <z>1</z>
     </scale>
-    <Name>trava;(11.0, 9.0)</Name>
+    <Name>House8;(5.0, 4.0)</Name>
   </GameItem>
   <GameItem>
     <position>
-      <x>6.72</x>
-      <y>4.79999971</y>
+      <x>3.52</x>
+      <y>2.24</y>
       <z>2</z>
     </position>
     <scale>
@@ -77,12 +167,12 @@
       <y>1</y>
       <z>1</z>
     </scale>
-    <Name>trava;(11.0, 8.0)</Name>
+    <Name>House9;(6.0, 4.0)</Name>
   </GameItem>
   <GameItem>
     <position>
-      <x>6.72</x>
-      <y>4.16</y>
+      <x>3.52</x>
+      <y>1.5999999</y>
       <z>2</z>
     </position>
     <scale>
@@ -90,12 +180,25 @@
       <y>1</y>
       <z>1</z>
     </scale>
-    <Name>trava;(11.0, 7.0)</Name>
+    <Name>House12;(6.0, 3.0)</Name>
+  </GameItem>
+  <GameItem>
+    <position>
+      <x>2.87999988</x>
+      <y>1.5999999</y>
+      <z>2</z>
+    </position>
+    <scale>
+      <x>1</x>
+      <y>1</y>
+      <z>1</z>
+    </scale>
+    <Name>House11;(5.0, 3.0)</Name>
   </GameItem>
   <GameItem xsi:type="NextScene">
     <position>
-      <x>7.35999966</x>
-      <y>6.72</y>
+      <x>2.24</x>
+      <y>1.5999999</y>
       <z>2</z>
     </position>
     <scale>
@@ -103,63 +206,7 @@
       <y>1</y>
       <z>1</z>
     </scale>
-    <Name>doors_2;(12.0, 11.0)</Name>
-    <nextScene>test_scene</nextScene>
-  </GameItem>
-  <GameItem xsi:type="NextScene">
-    <position>
-      <x>7.35999966</x>
-      <y>6.08</y>
-      <z>2</z>
-    </position>
-    <scale>
-      <x>1</x>
-      <y>1</y>
-      <z>1</z>
-    </scale>
-    <Name>doors_2;(12.0, 10.0)</Name>
-    <nextScene>test_scene</nextScene>
-  </GameItem>
-  <GameItem xsi:type="NextScene">
-    <position>
-      <x>7.35999966</x>
-      <y>5.44</y>
-      <z>2</z>
-    </position>
-    <scale>
-      <x>1</x>
-      <y>1</y>
-      <z>1</z>
-    </scale>
-    <Name>doors_2;(12.0, 9.0)</Name>
-    <nextScene>test_scene</nextScene>
-  </GameItem>
-  <GameItem xsi:type="NextScene">
-    <position>
-      <x>7.35999966</x>
-      <y>4.79999971</y>
-      <z>2</z>
-    </position>
-    <scale>
-      <x>1</x>
-      <y>1</y>
-      <z>1</z>
-    </scale>
-    <Name>doors_2;(12.0, 8.0)</Name>
-    <nextScene>test_scene</nextScene>
-  </GameItem>
-  <GameItem xsi:type="NextScene">
-    <position>
-      <x>7.35999966</x>
-      <y>4.16</y>
-      <z>2</z>
-    </position>
-    <scale>
-      <x>1</x>
-      <y>1</y>
-      <z>1</z>
-    </scale>
-    <Name>doors_2;(12.0, 7.0)</Name>
-    <nextScene>test_scene</nextScene>
+    <Name>doors_1;(4.0, 3.0)</Name>
+    <nextScene>shop</nextScene>
   </GameItem>
 </ArrayOfGameItem>

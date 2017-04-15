@@ -21,6 +21,7 @@ public class Scene_Controller : MonoBehaviour {
             ItemsList[i - 1].texture = s.Split(';')[1];
             ItemsList[i - 1].Layer = int.Parse(s.Split(';')[3]);
             ItemsList[i - 1].colliding = bool.Parse(s.Split(';')[4]);
+            ItemsList[i - 1].parameter = bool.Parse(s.Split(';')[5]);
             s = s.Split(';')[2];
             if (s == 1.ToString())
                 ItemsList[i - 1].movable = true;
@@ -35,6 +36,7 @@ public class Scene_Controller : MonoBehaviour {
 	void Update () {
 		if(transition)
         {
+            GameObject.Find("Main Camera").GetComponent<GUITexture>().pixelInset = new Rect(new Vector2(-GameObject.Find("Main Camera").GetComponent<Camera>().pixelWidth * GameObject.Find("Main Camera").transform.position.x, -GameObject.Find("Main Camera").GetComponent<Camera>().pixelHeight * GameObject.Find("Main Camera").transform.position.y), new Vector2(1000, 1000));
             scrtransition.Update();
         }
 	}

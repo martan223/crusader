@@ -30,7 +30,7 @@ namespace Assets.scripts
                 Scene_Controller.scene.Load(scenePath);
                 //Scene_Controller.transition = false;
                 if(nextIn)
-                    Scene_Controller.scrtransition = new FadeIn(10f, 0.1F, "test_scene");
+                    Scene_Controller.scrtransition = new FadeIn(10f, 0.1F);
             }
         }
     }

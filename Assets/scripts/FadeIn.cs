@@ -9,12 +9,11 @@ namespace Assets.scripts
     class FadeIn : ScreenTransition
     {
         string scenePath;
-        public FadeIn(float Duration, float Speed, string SceneInPath)
+        public FadeIn(float Duration, float Speed)
         {
             this.Speed = Speed;
             this.Duration = Remaining = Duration;
             Remaining = Duration / 2;
-            scenePath = SceneInPath;
         }
         public override void Update()
         {

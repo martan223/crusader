@@ -10,6 +10,7 @@ public class Item : MonoBehaviour {
     public bool movable;
     public Vector2 position;
     public int Layer;
+    public bool parameter;
 	// Use this for initialization
 	void Start () {
 	
