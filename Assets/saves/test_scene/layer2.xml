@@ -208,5 +208,9 @@
     </scale>
     <Name>doors_1;(4.0, 3.0)</Name>
     <nextScene>shop</nextScene>
+    <pos>
+      <x>7</x>
+      <y>4</y>
+    </pos>
   </GameItem>
 </ArrayOfGameItem>

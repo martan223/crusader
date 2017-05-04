@@ -17,6 +17,7 @@ namespace Assets.scripts
         }
         public override void Update()
         {
+            
             Remaining -= Speed;
             //Debug.Log(Remaining/Duration);
             if (Remaining > 0.5f)

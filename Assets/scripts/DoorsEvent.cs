@@ -12,8 +12,8 @@ namespace Assets.scripts
         {
             NextScene ns = Scene_Controller.scene.Layer2.Find(p => p.Name == gameObject.name)as NextScene;
             Debug.Log(ns.nextScene);
-            nextScene = ns.nextScene;
-            Scene_Controller.scrtransition = new FadeOut(10f, 0.1F, nextScene, true);
+            nextScene = ns.nextScene.Split(';')[0];
+            Scene_Controller.scrtransition = new FadeOut(10f, 0.1F, nextScene, true, ns.pos);
             Scene_Controller.transition = true;
         }
     }

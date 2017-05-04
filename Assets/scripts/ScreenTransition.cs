@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
 namespace Assets.scripts
 {
@@ -12,7 +13,7 @@ namespace Assets.scripts
         public float Remaining;
         public virtual void Update()
         {
-
+            
         }
     }
 }

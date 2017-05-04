@@ -27,7 +27,7 @@ public class action_scripts : MonoBehaviour {
             if (actions[i].Contains("#"))
             {
                 string[] q = new string[s.Length-1];
-                for (int w = 0; w < s.Length-2; w++)
+                for (int w = 0; w < s.Length-1; w++)
                 {
                     q[w] = s[w + 1];
                 }

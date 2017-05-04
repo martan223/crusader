@@ -5,25 +5,40 @@ using System.IO;
 
 public class person : MonoBehaviour {
     public action_scripts acs;
-    public int action_number;
-
+    public int Action_number;
+    public bool UpdateAct;
     //straight vars
     public float speed;
     public Vector2 step;
     public int zielNumber;
     Vector2[] ziel = new Vector2[0];
     public bool initialize;
+    //delegate
+    public delegate void EveryUpdate(person p);
+    public event EveryUpdate eu = new EveryUpdate(none);
 	// Use this for initialization
-	void Start () {
+
+    //pop up vars
+    static float popOpocity;
+    GameObject PopUp;
+    //sleep var
+    int timeleft = -1;
+	void Start () 
+    {
+        
         acs = new action_scripts();
-        acs.load("Assets/saves/action_scripts/path.csv");
+        acs.load("Assets/saves/action_scripts/popuptest.csv");
         speed = 0.32f;
         initialize = true;
+        PopUp = this.transform.FindChild("pop-up").gameObject;
+        
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        act();
+        eu.Invoke(this);
+        if(UpdateAct)
+            act();
 	}
 
 
@@ -36,23 +51,46 @@ public class person : MonoBehaviour {
     //switch between actions
     public void act()
     {
-        if(action_number < acs.actions.Length)
+        if(Action_number < acs.actions.Length)
         {
-        switch(acs.actions[action_number])
+        switch(acs.actions[Action_number])
         {
             case "#straight":
-                walkStraight(acs.parameters[action_number][0]);
+                walkStraight(acs.parameters[Action_number][0]);
                     break;
-            case "tick":
+            case "pop-up":
                     {
                         this.GetComponent<AudioSource>().Play();
-                        action_number++;
+                        Action_number++;
                     }
                     break;
             case "again":
-                    action_number = 0;
+                    Action_number = 0;
                     initialize = true;
                     break;
+            case "popupHIDE":
+                popOpocity = 1;
+                Debug.Log("added   " + eu.GetInvocationList().Length);
+                eu += new EveryUpdate(popUpHide);
+                Action_number++;
+                break;
+            case "popupSHOW":
+                popOpocity = 0;
+                eu += new EveryUpdate(popUpShow);
+                Action_number++;
+                break;
+            case "#sleep":
+                if(timeleft == -1)
+                    timeleft = int.Parse(acs.parameters[Action_number][0]);
+                timeleft--;
+                if(timeleft == 0)
+                {
+                    Action_number++;
+                    timeleft = -1;
+                }
+                break;
+            case "end":
+                break;
             }
         }
     }
@@ -90,7 +128,7 @@ public class person : MonoBehaviour {
         if (ziel[zielNumber] == (Vector2)this.transform.position && zielNumber+1 == ziel.Length)
         {
             step = new Vector2(0,0);
-            action_number++;
+            Action_number++;
         }
         //if (this.transform.position.x < ziel[zielNumber].x)
             this.transform.position = new Vector2(this.transform.position.x + step.x, this.transform.position.y + step.y);
@@ -102,5 +140,32 @@ public class person : MonoBehaviour {
         //else if (this.transform.position.y > ziel[zielNumber].y)
         //    this.transform.position = new Vector2(this.transform.position.x, this.transform.position.y - step.y);
         //else this.transform.position = new Vector2(this.transform.position.x, this.transform.position.y);
+    }
+
+    public static void popUpHide(person p)
+    {
+        //Debug.Log(popOpocity);
+        popOpocity -= 0.1f;
+        Debug.Log(popOpocity);
+        p.PopUp.GetComponent<SpriteRenderer>().color = new Color(255,255,255,popOpocity);
+        if(popOpocity < 0)
+        {
+            p.eu -= new EveryUpdate(popUpHide);
+        }
+    }
+
+    public static void popUpShow(person p)
+    {
+        popOpocity += 0.1f;
+        Debug.Log(popOpocity);
+        p.PopUp.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, popOpocity);
+        if (popOpocity > 1)
+        {
+            p.eu -= new EveryUpdate(popUpShow);
+        }
+    }
+    public static void none(person p)
+    {
+        
     }
 }

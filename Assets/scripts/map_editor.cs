@@ -111,15 +111,15 @@ public class map_editor : MonoBehaviour
         }
         Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         //MOVE CAMERA
-        Vector3 cam = GameObject.Find("Main Camera").transform.position;
-        if (Input.GetKey(KeyCode.W))
-            GameObject.Find("Main Camera").transform.position = new Vector3(cam.x, cam.y + 0.1f, -10);
-        if (Input.GetKey(KeyCode.S))
-            GameObject.Find("Main Camera").transform.position = new Vector3(cam.x, cam.y - 0.1f, -10);
-        if (Input.GetKey(KeyCode.A))
-            GameObject.Find("Main Camera").transform.position = new Vector3(cam.x - 0.1f, cam.y, -10);
-        if (Input.GetKey(KeyCode.D))
-            GameObject.Find("Main Camera").transform.position = new Vector3(cam.x + 0.1f, cam.y, -10);
+        //Vector3 cam = GameObject.Find("Main Camera").transform.position;
+        //if (Input.GetKey(KeyCode.W))
+        //    GameObject.Find("Main Camera").transform.position = new Vector3(cam.x, cam.y + 0.1f, -10);
+        //if (Input.GetKey(KeyCode.S))
+        //    GameObject.Find("Main Camera").transform.position = new Vector3(cam.x, cam.y - 0.1f, -10);
+        //if (Input.GetKey(KeyCode.A))
+        //    GameObject.Find("Main Camera").transform.position = new Vector3(cam.x - 0.1f, cam.y, -10);
+        //if (Input.GetKey(KeyCode.D))
+        //    GameObject.Find("Main Camera").transform.position = new Vector3(cam.x + 0.1f, cam.y, -10);
         //PICK TILE
 
         if (hit.collider != null && hit.collider.tag == "editortool" && Input.GetMouseButton(0))
@@ -188,13 +188,7 @@ public class map_editor : MonoBehaviour
                                     GameObject.Find(nam).transform.position = new Vector3(worldPoint.x - worldPoint.x % oneTile + oneTile / 2, worldPoint.y - worldPoint.y % oneTile + oneTile / 2, 2);
                                     GameObject.Find(nam).transform.localScale = new Vector3(1, 1, 1);
                                     GameObject.Find(nam).tag = "Untagged";
-                                    Debug.Log(scene.Layer1.Count);
-                                    Debug.Log(scene.Layer2.Count);
-                                    Debug.Log(scene.Layer3.Count);
                                     scene.Layer2.Add(new NextScene(GameObject.Find(nam),parameter));
-                                    Debug.Log(scene.Layer1.Count);
-                                    Debug.Log(scene.Layer2.Count);
-                                    Debug.Log(scene.Layer3.Count);
                                 }
                             }
                             break;

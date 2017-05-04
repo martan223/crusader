@@ -28,7 +28,7 @@ public class Scene_Controller : MonoBehaviour {
 
         } 
         scene = new Scene();
-        scrtransition = new FadeOut(10f, 0.1F, "test_scene",true);
+        scrtransition = new FadeOut(10f, 0.1F, "test_scene",true, new Vector2());
         transition = true;
 	}
 	
