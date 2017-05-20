@@ -58,7 +58,7 @@ public class PathEditor : MonoBehaviour {
             if (Stops.Count > 0)
             {
                 GameObject.Find("Dot" + Stops.Count).AddComponent<LineRenderer>();
-                GameObject.Find("Dot" + Stops.Count).GetComponent<LineRenderer>().numPositions = 2;
+                GameObject.Find("Dot" + Stops.Count).GetComponent<LineRenderer>().positionCount = 2;
                 GameObject.Find("Dot" + Stops.Count).GetComponent<LineRenderer>().material = mat;
                 GameObject.Find("Dot" + Stops.Count).GetComponent<LineRenderer>().startWidth = 0.25f;
                 GameObject.Find("Dot" + Stops.Count).GetComponent<LineRenderer>().endWidth = 0.25f;
@@ -109,7 +109,7 @@ public class PathEditor : MonoBehaviour {
             if(Stops.Count > 0)
             {
                 GameObject.Find("Dot" + Stops.Count).AddComponent<LineRenderer>();
-                GameObject.Find("Dot" + Stops.Count).GetComponent<LineRenderer>().numPositions = 2;
+                GameObject.Find("Dot" + Stops.Count).GetComponent<LineRenderer>().positionCount = 2;
                 GameObject.Find("Dot" + Stops.Count).GetComponent<LineRenderer>().material = mat;
                 GameObject.Find("Dot" + Stops.Count).GetComponent<LineRenderer>().startWidth= 0.25f;
                 GameObject.Find("Dot" + Stops.Count).GetComponent<LineRenderer>().endWidth = 0.25f;
