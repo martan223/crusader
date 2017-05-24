@@ -90,9 +90,21 @@ public class map_editor : MonoBehaviour
             }
         if (show)
         {
-            for (int i = 0; i < ItemsList.Length; i++)
+            if (Input.GetAxis("Mouse ScrollWheel")>0) // forward
             {
-
+                GameObject[] g = GameObject.FindGameObjectsWithTag("editortool");
+                for (int i = 0; i < g.Length; i++)
+                {
+                    g[i].transform.position = new Vector3(g[i].transform.position.x + 0.64f, g[i].transform.position.y);
+                }
+            }
+            if (Input.GetAxis("Mouse ScrollWheel")<0) // backwards
+            {
+                GameObject[] g = GameObject.FindGameObjectsWithTag("editortool");
+                for (int i = 0; i < g.Length; i++)
+                {
+                    g[i].transform.position = new Vector3(g[i].transform.position.x - 0.64f, g[i].transform.position.y);
+                }
             }
         }
         move();

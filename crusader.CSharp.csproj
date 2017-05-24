@@ -79,6 +79,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\scripts\AIController.cs" />
+    <Compile Include="Assets\scripts\Dialog_controller.cs" />
     <Compile Include="Assets\scripts\DoorsEvent.cs" />
     <Compile Include="Assets\scripts\FadeIn.cs" />
     <Compile Include="Assets\scripts\FadeOut.cs" />
@@ -94,12 +95,14 @@
     <Compile Include="Assets\scripts\Scene_Controller.cs" />
     <Compile Include="Assets\scripts\ScreenTransition.cs" />
     <Compile Include="Assets\scripts\SimpleCharacter.cs" />
+    <Compile Include="Assets\scripts\Text_intfc.cs" />
     <Compile Include="Assets\scripts\XmlManager.cs" />
     <Compile Include="Assets\scripts\action_scripts.cs" />
     <Compile Include="Assets\scripts\map_editor.cs" />
     <Compile Include="Assets\scripts\person.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\saves\DIALOGS\test.txt" />
     <None Include="Assets\saves\ada\layer1.xml" />
     <None Include="Assets\saves\ada\layer2.xml" />
     <None Include="Assets\saves\ada\layer3.xml" />

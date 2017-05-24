@@ -1,0 +1,4 @@
+this is test.
+second line.;
+now the 2nd dialogue;
+and the third

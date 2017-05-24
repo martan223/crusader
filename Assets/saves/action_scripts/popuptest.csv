@@ -2,4 +2,5 @@ popupHIDE;
 #sleep;20
 popupSHOW;
 #sleep;20
+#dialog;test
 again;

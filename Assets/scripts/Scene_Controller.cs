@@ -9,6 +9,7 @@ public class Scene_Controller : MonoBehaviour {
     public static Scene scene;
     public static bool transition;
     public static ScreenTransition scrtransition;
+    public static bool pause;
 	// Use this for initialization
 	void Start () {
         string[] q = System.IO.File.ReadAllLines(@"Assets/saves/items_list.csv");

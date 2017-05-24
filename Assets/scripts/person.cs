@@ -22,6 +22,8 @@ public class person : MonoBehaviour
     public event EveryUpdate eu = new EveryUpdate(none);
     // Use this for initialization
 
+    //Text_intfc
+    Text_intfc txt;
     //pop up vars
     public static float popOpocity;
     public GameObject PopUp;
@@ -29,6 +31,8 @@ public class person : MonoBehaviour
     public int timeleft = -1;
     void Start()
     {
+        txt = GameObject.Find("text_bckgrnd").GetComponent<Text_intfc>();
+        txt.off();
         acs = new action_scripts();
         acs.load(acsSource);
         speed = 0.32f;
@@ -55,7 +59,7 @@ public class person : MonoBehaviour
     //switch between actions
     public void act()
     {
-        if (Action_number < acs.actions.Length)
+        if (Action_number < acs.actions.Length && !Scene_Controller.pause)
         {
             switch (acs.actions[Action_number])
             {
@@ -91,6 +95,12 @@ public class person : MonoBehaviour
                     {
                         Action_number++;
                         timeleft = -1;
+                    }
+                    break;
+                case "#dialog":
+                    {
+                        txt.Dialog(acs.parameters[Action_number][0]);
+                        Action_number++;
                     }
                     break;
                 case "end":
