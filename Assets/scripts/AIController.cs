@@ -35,7 +35,10 @@ public class AIController : MonoBehaviour {
             persons[i-1].transform.position = new Vector3(float.Parse(s.Split(';')[4]), float.Parse(s.Split(';')[5]));
             persons[i - 1].UpdateAct = true;
             persons[i - 1].transform.SetParent(GameObject.Find("AIController").transform);
-        } 
+            persons[i - 1].gameObject.SetActive(true);
+            persons[i - 1].GetComponent<person>().txt = GameObject.Find("text_bckgrnd").GetComponent<Text_intfc>();
+        }
+        //GameObject.Find("text_bckgrnd").GetComponent<Text_intfc>().off();
     }
 	// Update is called once per frame
 	void Update () {
@@ -52,4 +55,14 @@ public class AIController : MonoBehaviour {
             persons[0].UpdateAct = false;
         }
 	}
+    public void SceneUpdate()
+    {
+        foreach(person p in persons)
+        {
+            if (Scene_Controller.SceneName != p.SceneName)
+                p.gameObject.SetActive(false);
+            else
+                p.gameObject.SetActive(true);
+        }
+    }
 }

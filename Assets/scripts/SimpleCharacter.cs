@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SimpleCharacter : MonoBehaviour {
-
+    public Inventory Inv;
 	// Use this for initialization
 	void Start () {
-		
+        Inv = new Inventory();
 	}
 	
 	// Update is called once per frame

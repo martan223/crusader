@@ -91,6 +91,7 @@
     <Compile Include="Assets\scripts\NextScene.cs" />
     <Compile Include="Assets\scripts\PathEditor.cs" />
     <Compile Include="Assets\scripts\RandomAI.cs" />
+    <Compile Include="Assets\scripts\SaveControl.cs" />
     <Compile Include="Assets\scripts\Scene.cs" />
     <Compile Include="Assets\scripts\Scene_Controller.cs" />
     <Compile Include="Assets\scripts\ScreenTransition.cs" />
@@ -100,9 +101,11 @@
     <Compile Include="Assets\scripts\action_scripts.cs" />
     <Compile Include="Assets\scripts\map_editor.cs" />
     <Compile Include="Assets\scripts\person.cs" />
+    <Compile Include="Assets\scripts\trigger.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\saves\DIALOGS\test.txt" />
+    <None Include="Assets\saves\DIALOGS\wanna.txt" />
     <None Include="Assets\saves\ada\layer1.xml" />
     <None Include="Assets\saves\ada\layer2.xml" />
     <None Include="Assets\saves\ada\layer3.xml" />

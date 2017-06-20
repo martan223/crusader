@@ -16,6 +16,7 @@ public class Scene : MonoBehaviour {
             Layer3 = new List<GameItem>();
     }
 	public void Load (string path) {
+            Scene_Controller.SceneName = path;
             if (Layer1 != null)
                 Delete();
             Layer1 = Layer2 = Layer3 = new List<GameItem>();

@@ -31,6 +31,7 @@ namespace Assets.scripts
             {
                 GameObject.Find("Main Camera").GetComponent<GUITexture>().color = new Color(0, 0, 0, 0.5f);
                 Scene_Controller.scene.Load(scenePath);
+                GameObject.Find("AIController").GetComponent<AIController>().SceneUpdate();
                 Debug.Log(pos);
                 GameObject.Find("player").transform.position = pos*0.64f - new Vector2(0.32f,0.64f);
                 //Scene_Controller.transition = false;

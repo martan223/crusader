@@ -6,12 +6,16 @@ using UnityEngine;
 public class Scene_Controller : MonoBehaviour {
 
     public static Item[] ItemsList;
+    public static Inventory ItemSheet;
     public static Scene scene;
     public static bool transition;
     public static ScreenTransition scrtransition;
     public static bool pause;
+    public static GameObject player;
+    public static string SceneName;
 	// Use this for initialization
 	void Start () {
+        player = GameObject.Find("player");
         string[] q = System.IO.File.ReadAllLines(@"Assets/saves/items_list.csv");
         ItemsList = new Item[q.Length - 1];
         for (int i = 1; i < q.Length; i++)
@@ -31,6 +35,8 @@ public class Scene_Controller : MonoBehaviour {
         scene = new Scene();
         scrtransition = new FadeOut(10f, 0.1F, "test_scene",true, new Vector2());
         transition = true;
+        ItemSheet = new Inventory();
+        ItemSheet.LoadItems();
 	}
 	
 	// Update is called once per frame

@@ -1,4 +1,6 @@
 this is test.
 second line.;
+@give:0:Here you have!
+Enjoy!;
 now the 2nd dialogue;
 and the third

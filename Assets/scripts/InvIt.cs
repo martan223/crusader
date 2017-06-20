@@ -5,6 +5,8 @@ using UnityEngine;
 public class InvIt : MonoBehaviour {
     public int ID, amount;
     public float weight;
+    public GameObject Resource;
+    public bool Stackable;
     
 	// Use this for initialization
 	void Start () {

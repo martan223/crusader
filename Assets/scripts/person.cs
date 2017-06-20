@@ -5,12 +5,14 @@ using System.IO;
 
 public class person : MonoBehaviour
 {
+    public Inventory Inv;
     public string acsSource;
     public action_scripts acs;
     public int Action_number;
     public bool UpdateAct;
     public string SceneName;
     public string resource;
+    public bool colliding;
     //straight vars
     public float speed;
     public Vector2 step;
@@ -23,7 +25,7 @@ public class person : MonoBehaviour
     // Use this for initialization
 
     //Text_intfc
-    Text_intfc txt;
+    public Text_intfc txt;
     //pop up vars
     public static float popOpocity;
     public GameObject PopUp;
@@ -31,13 +33,16 @@ public class person : MonoBehaviour
     public int timeleft = -1;
     void Start()
     {
-        txt = GameObject.Find("text_bckgrnd").GetComponent<Text_intfc>();
-        txt.off();
+        Inv = new Inventory();
+        Inv.AddItem(0, 1);
+        Inv.AddItem(0, 1);
         acs = new action_scripts();
         acs.load(acsSource);
-        speed = 0.32f;
+        speed = 0.25f;
         initialize = true;
-        PopUp = this.transform.FindChild("pop-up").gameObject;
+        PopUp = this.transform.Find("pop-up").gameObject;
+        PopUp.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 0);
+        SceneName = "test_scene";
 
     }
 
@@ -99,8 +104,12 @@ public class person : MonoBehaviour
                     break;
                 case "#dialog":
                     {
-                        txt.Dialog(acs.parameters[Action_number][0]);
-                        Action_number++;
+                        if (colliding && Input.GetKeyDown(KeyCode.E))
+                        {
+                            txt.Dialog(acs.parameters[Action_number][0],gameObject as GameObject);
+                            eu += new EveryUpdate(popUpHide);
+                            Action_number++;
+                        }
                     }
                     break;
                 case "end":
@@ -126,7 +135,7 @@ public class person : MonoBehaviour
 
             zielNumber = 0;
             float totalsteps = Mathf.CeilToInt(Mathf.Sqrt((this.transform.position.x - ziel[zielNumber].x) * (this.transform.position.x - ziel[zielNumber].x) + (this.transform.position.y - ziel[zielNumber].y) * (this.transform.position.y - ziel[zielNumber].y)) / speed);
-            step = new Vector2(((this.transform.position.x + ziel[zielNumber].x) / speed) / totalsteps * speed, ((this.transform.position.y + ziel[zielNumber].y) / speed) / totalsteps * speed);
+            step = new Vector2(((ziel[zielNumber].x - this.transform.position.x)) / totalsteps * speed, ((ziel[zielNumber].y - this.transform.position.y)) / totalsteps * speed);
             //Debug.Log(totalsteps);
             //Debug.Log(Mathf.CeilToInt((this.transform.position.x + ziel[zielNumber].x) / speed));
             //Debug.Log(new Vector2(Mathf.CeilToInt((this.transform.position.x + ziel[zielNumber].x) / speed) / totalsteps * speed, Mathf.CeilToInt((this.transform.position.y + ziel[zielNumber].y) / speed) / totalsteps * speed));
@@ -137,7 +146,7 @@ public class person : MonoBehaviour
             this.transform.position = ziel[zielNumber];
             zielNumber++;
             float totalsteps = Mathf.CeilToInt(Mathf.Sqrt((this.transform.position.x - ziel[zielNumber].x) * (this.transform.position.x - ziel[zielNumber].x) + (this.transform.position.y - ziel[zielNumber].y) * (this.transform.position.y - ziel[zielNumber].y)) / speed);
-            step = new Vector2(((ziel[zielNumber].x - this.transform.position.x)) / totalsteps, ((ziel[zielNumber].y - this.transform.position.y)) / totalsteps);
+            step = new Vector2(((ziel[zielNumber].x - this.transform.position.x)) / totalsteps * speed, ((ziel[zielNumber].y - this.transform.position.y)) / totalsteps * speed);
         }
         if (ziel[zielNumber] == (Vector2)this.transform.position && zielNumber + 1 == ziel.Length)
         {
