@@ -11,7 +11,9 @@ public class Inventory : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+        if (Items == null)
+            Items = new List<InvIt>();
+        
 	}
 
     public void LoadItems()
@@ -20,23 +22,31 @@ public class Inventory : MonoBehaviour {
         for (int i = 1; i < q.Length; i++)
         {
             string s = q[i];
-            Items.Add(new InvIt());
+            InvIt a = new InvIt();
+            a.ID = int.Parse(s.Split(';')[0]);
+            a.Resource = Resources.Load(s.Split(';')[1]) as GameObject;
 
-            Items[i - 1].ID = int.Parse(s.Split(';')[0]);
-            Items[i - 1].Resource = Resources.Load(s.Split(';')[1]) as GameObject;
-
-            Items[i - 1].weight = float.Parse(s.Split(';')[2]);
-            Items[i - 1].Stackable = bool.Parse(s.Split(';')[3]);
+            a.weight = float.Parse(s.Split(';')[2]);
+            a.Stackable = bool.Parse(s.Split(';')[3]);
+            Items.Add(a);
         }
     }
     public void AddItem(int ID, int amount = 1)
     {
         if (Items.Exists(e => e.ID == ID) && Items.Find(e => e.ID == ID).Stackable)
-            Items.Find(e => e.ID == ID).amount++;
+        {
+            InvIt a = Items.Find(e => e.ID == ID);
+            int o = Items.IndexOf(a);
+            a.amount++;
+            Items.Remove(Items.Find(e => e.ID == ID));
+            Items.Insert(o,a);
+
+        }
         else
         {
-            Items.Add(Scene_Controller.ItemSheet.Items[ID]);
-            Items[Items.Count - 1].amount = amount;
+            InvIt a = Scene_Controller.ItemSheet.Items[ID];
+            a.amount = amount;
+            Items.Add(a);
         }
     }
     public void DrawInv()
@@ -64,21 +74,28 @@ public class Inventory : MonoBehaviour {
     public void TransferItems(Inventory old, int i)
     {
         if (old.Items.Find(e => e.ID == i).amount > 1)
-            old.Items.Find(e => e.ID == i).amount--;
+        {
+            InvIt a = old.Items.Find(e => e.ID == i);
+            int o = old.Items.IndexOf(a);
+            a.amount--;
+            old.Items.Insert(o, a);
+        }
         else
             old.RemoveItem(i);
+        old.DrawAllInv();
         this.AddItem(i);
+        old.DrawAllInv();
     }
     public void RemoveItem(int i)
     {
         if (Items.Contains(Scene_Controller.ItemSheet.Items[i]))
-            this.Items.Remove(Scene_Controller.ItemSheet.Items[i]);
+            Items.Remove(Scene_Controller.ItemSheet.Items[i]);
     }
     public void DrawAllInv()
     {
         for (int i = 0; i < Items.Count; i++)
         {
-            Debug.Log(Items[i].ID + " : " + Items[i].amount);
+                Debug.Log(Items[i].ID + " : " + Items[i].amount);
         }
     }
 }

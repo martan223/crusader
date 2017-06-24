@@ -34,8 +34,7 @@ public class person : MonoBehaviour
     void Start()
     {
         Inv = new Inventory();
-        Inv.AddItem(0, 1);
-        Inv.AddItem(0, 1);
+        Inv.AddItem(0, 4);
         acs = new action_scripts();
         acs.load(acsSource);
         speed = 0.25f;
@@ -169,7 +168,6 @@ public class person : MonoBehaviour
     {
         //Debug.Log(popOpocity);
         popOpocity -= 0.1f;
-        Debug.Log(popOpocity);
         p.PopUp.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, popOpocity);
         if (popOpocity < 0)
         {
@@ -180,7 +178,6 @@ public class person : MonoBehaviour
     public static void popUpShow(person p)
     {
         popOpocity += 0.1f;
-        Debug.Log(popOpocity);
         p.PopUp.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, popOpocity);
         if (popOpocity > 1)
         {

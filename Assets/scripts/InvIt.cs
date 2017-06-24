@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InvIt : MonoBehaviour {
+public struct InvIt{
     public int ID, amount;
     public float weight;
     public GameObject Resource;

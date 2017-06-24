@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <RootNamespace></RootNamespace>
+    <ProjectGuid>{DE1E1B3D-AF90-CB0F-6FD5-5FD0AB7B14E6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <BaseDirectory>Assets</BaseDirectory>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Temp\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_5_6_1;UNITY_5_6;UNITY_5;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_GENERICS;ENABLE_PVR_GI;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_RUNTIME_NAVMESH_BUILDING;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_NATIVE_ARRAY;INCLUDE_DYNAMIC_GI;INCLUDE_GI;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_SCRIPTING_NEW_CSHARP_COMPILER;ENABLE_VIDEO;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_EVENT_QUEUE;ENABLE_CLUSTERINPUT;ENABLE_VR;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_2_0_SUBSET;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_NATIVE_ARRAY_CHECKS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Temp\bin\Release\</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="UnityEngine">
+      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor">
+      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+     <Compile Include="Assets\scripts\AIController.cs" />
+     <Compile Include="Assets\scripts\Dialog_controller.cs" />
+     <Compile Include="Assets\scripts\DoorsEvent.cs" />
+     <Compile Include="Assets\scripts\FadeIn.cs" />
+     <Compile Include="Assets\scripts\FadeOut.cs" />
+     <Compile Include="Assets\scripts\FileManager.cs" />
+     <Compile Include="Assets\scripts\GameItem.cs" />
+     <Compile Include="Assets\scripts\InvIt.cs" />
+     <Compile Include="Assets\scripts\Inventory.cs" />
+     <Compile Include="Assets\scripts\Item.cs" />
+     <Compile Include="Assets\scripts\NextScene.cs" />
+     <Compile Include="Assets\scripts\PathEditor.cs" />
+     <Compile Include="Assets\scripts\RandomAI.cs" />
+     <Compile Include="Assets\scripts\SaveControl.cs" />
+     <Compile Include="Assets\scripts\Scene.cs" />
+     <Compile Include="Assets\scripts\Scene_Controller.cs" />
+     <Compile Include="Assets\scripts\ScreenTransition.cs" />
+     <Compile Include="Assets\scripts\SimpleCharacter.cs" />
+     <Compile Include="Assets\scripts\Text_intfc.cs" />
+     <Compile Include="Assets\scripts\XmlManager.cs" />
+     <Compile Include="Assets\scripts\action_scripts.cs" />
+     <Compile Include="Assets\scripts\map_editor.cs" />
+     <Compile Include="Assets\scripts\person.cs" />
+     <Compile Include="Assets\scripts\trigger.cs" />
+     <None Include="Assets\saves\DIALOGS\test.txt" />
+     <None Include="Assets\saves\ttt\layer2.xml" />
+     <None Include="Assets\saves\qwertz\layer1.xml" />
+     <None Include="Assets\saves\DIALOGS\wanna.txt" />
+     <None Include="Assets\saves\test_scene\layer1.xml" />
+     <None Include="Assets\saves\ada\layer2.xml" />
+     <None Include="Assets\saves\ada\layer1.xml" />
+     <None Include="Assets\saves\ttt\layer3.xml" />
+     <None Include="Assets\saves\qwertz\layer3.xml" />
+     <None Include="Assets\saves\test_scene\layer3.xml" />
+     <None Include="Assets\saves\shop\layer2.xml" />
+     <None Include="Assets\saves\new_scene\layer1.xml" />
+     <None Include="Assets\saves\test_scene\layer2.xml" />
+     <None Include="Assets\saves\vvvvv\layer2.xml" />
+     <None Include="Assets\saves\test_s\layer1.xml" />
+     <None Include="Assets\saves\new_scene\layer3.xml" />
+     <None Include="Assets\saves\ttt\layer1.xml" />
+     <None Include="Assets\saves\test_s\layer2.xml" />
+     <None Include="Assets\saves\vvvvv\layer3.xml" />
+     <None Include="Assets\saves\ada\layer3.xml" />
+     <None Include="Assets\saves\shop\layer1.xml" />
+     <None Include="Assets\saves\test_s\layer3.xml" />
+     <None Include="Assets\saves\rrr\layer3.xml" />
+     <None Include="Assets\saves\shop\layer3.xml" />
+     <None Include="Assets\saves\rrr\layer1.xml" />
+     <None Include="Assets\saves\vvvvv\layer1.xml" />
+     <None Include="Assets\saves\rrr\layer2.xml" />
+     <None Include="Assets\saves\qwertz\layer2.xml" />
+     <None Include="Assets\saves\new_scene\layer2.xml" />
+ <Reference Include="UnityEngine.UI">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Networking">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.TestRunner">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/UnityEngine.TestRunner.dll</HintPath>
+ </Reference>
+ <Reference Include="nunit.framework">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/nunit.framework.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Analytics">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.HoloLens">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.VR">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll</HintPath>
+ </Reference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  
+</Project>

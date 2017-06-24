@@ -36,9 +36,10 @@ public class Text_intfc : MonoBehaviour {
                     {
                         case "give":
                             {
-                                if (parent.GetComponent<person>().Inv.Items.Contains(Scene_Controller.ItemSheet.Items[int.Parse(DC.dialogue[DC.phrase].Split(':')[1])]))
+                                Debug.Log(Scene_Controller.ItemSheet.Items[int.Parse(DC.dialogue[DC.phrase].Split(':')[1])].Resource.name);
+                                if(parent.GetComponent<person>().Inv.Items.Exists(e => e.ID == Scene_Controller.ItemSheet.Items[int.Parse(DC.dialogue[DC.phrase].Split(':')[1])].ID))
                                 {
-                                    GameObject.Find("player").GetComponent<SimpleCharacter>().Inv.TransferItems(parent.GetComponent<person>().Inv, int.Parse(DC.dialogue[DC.phrase].Split(':')[1])); 
+                                    GameObject.Find("player").GetComponent<SimpleCharacter>().Inv.TransferItems(parent.GetComponent<person>().Inv, int.Parse(DC.dialogue[DC.phrase].Split(':')[1]));
                                     write(DC.dialogue[DC.phrase].Split(':')[2]);
                                 }
                                 else
@@ -48,16 +49,18 @@ public class Text_intfc : MonoBehaviour {
                             }
                             break;
                         case "take":
-                            if (GameObject.Find("player").GetComponent<SimpleCharacter>().Inv.Items.Contains(Scene_Controller.ItemSheet.Items[int.Parse(DC.dialogue[DC.phrase].Split(':')[1])]))
+                            {
+                                if (GameObject.Find("player").GetComponent<SimpleCharacter>().Inv.Items.Contains(Scene_Controller.ItemSheet.Items[int.Parse(DC.dialogue[DC.phrase].Split(':')[1])]))
                                 {
-                                    parent.GetComponent<person>().Inv.TransferItems(GameObject.Find("player").GetComponent<SimpleCharacter>().Inv, int.Parse(DC.dialogue[DC.phrase].Split(':')[1])); 
+                                    parent.GetComponent<person>().Inv.TransferItems(GameObject.Find("player").GetComponent<SimpleCharacter>().Inv, int.Parse(DC.dialogue[DC.phrase].Split(':')[1]));
                                     write(DC.dialogue[DC.phrase].Split(':')[2]);
                                 }
                                 else
                                     write("I dont have any more.");
                                 GameObject.Find("player").GetComponent<SimpleCharacter>().Inv.DrawInv();
                                 GameObject.Find("player").GetComponent<SimpleCharacter>().Inv.DrawAllInv();
-                                break;
+                            }
+                            break;
                     }
                 }
                 else

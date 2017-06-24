@@ -7,7 +7,7 @@ public class SimpleCharacter : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         Inv = new Inventory();
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
