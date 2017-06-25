@@ -77,19 +77,20 @@ public class Inventory : MonoBehaviour {
         {
             InvIt a = old.Items.Find(e => e.ID == i);
             int o = old.Items.IndexOf(a);
+            old.Items.Remove(a);
             a.amount--;
             old.Items.Insert(o, a);
         }
         else
             old.RemoveItem(i);
-        old.DrawAllInv();
+        //old.DrawAllInv();
         this.AddItem(i);
         old.DrawAllInv();
     }
     public void RemoveItem(int i)
     {
-        if (Items.Contains(Scene_Controller.ItemSheet.Items[i]))
-            Items.Remove(Scene_Controller.ItemSheet.Items[i]);
+        if (Items.Contains(Items.Find(e => e.ID == i)))
+            Items.Remove(Items.Find(e => e.ID == i));
     }
     public void DrawAllInv()
     {

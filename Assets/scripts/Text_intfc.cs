@@ -31,7 +31,7 @@ public class Text_intfc : MonoBehaviour {
             {
                 if(DC.dialogue[DC.phrase].Contains("@"))
                 {
-                    Debug.Log(int.Parse(DC.dialogue[DC.phrase].Split(':')[1]));
+                    //Debug.Log(int.Parse(DC.dialogue[DC.phrase].Split(':')[1]));
                     switch(DC.dialogue[DC.phrase].Remove(0,3).Split(':')[0])
                     {
                         case "give":
@@ -45,12 +45,12 @@ public class Text_intfc : MonoBehaviour {
                                 else
                                     write("I dont have any more.");
                                 GameObject.Find("player").GetComponent<SimpleCharacter>().Inv.DrawInv();
-                                GameObject.Find("player").GetComponent<SimpleCharacter>().Inv.DrawAllInv();
+                                //GameObject.Find("player").GetComponent<SimpleCharacter>().Inv.DrawAllInv();
                             }
                             break;
                         case "take":
                             {
-                                if (GameObject.Find("player").GetComponent<SimpleCharacter>().Inv.Items.Contains(Scene_Controller.ItemSheet.Items[int.Parse(DC.dialogue[DC.phrase].Split(':')[1])]))
+                                if (GameObject.Find("player").GetComponent<SimpleCharacter>().Inv.Items.Exists((e => e.ID == Scene_Controller.ItemSheet.Items[int.Parse(DC.dialogue[DC.phrase].Split(':')[1])].ID)))
                                 {
                                     parent.GetComponent<person>().Inv.TransferItems(GameObject.Find("player").GetComponent<SimpleCharacter>().Inv, int.Parse(DC.dialogue[DC.phrase].Split(':')[1]));
                                     write(DC.dialogue[DC.phrase].Split(':')[2]);
