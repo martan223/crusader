@@ -13,6 +13,7 @@ public class Scene_Controller : MonoBehaviour {
     public static bool pause;
     public static GameObject player;
     public static string SceneName;
+    public static bool Freze;
 	// Use this for initialization
 	void Start () {
         player = GameObject.Find("player");

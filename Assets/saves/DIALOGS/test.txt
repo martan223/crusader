@@ -1,6 +1,7 @@
 this is test.
 second line.;
-@give:0:Here you have!
+@give:1:Here you have!
 Enjoy!;
+@give:0:enjoy!;
 now the 2nd dialogue;
 and the third

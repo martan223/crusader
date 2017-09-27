@@ -28,7 +28,6 @@ public class map_editor : MonoBehaviour
         save.onClick.AddListener(Save);
         clear.onClick.AddListener(Clear);
         OneTile.onValueChanged.AddListener(delegate { oneTileChange(); });
-        OneTile.text = oneTile.ToString();
         ItemsMap = new List<GameObject>();
         parameterField.onValueChanged.AddListener(delegate { parameterChange(); });
         MapPath.onValueChanged.AddListener(delegate { pathChange(); });
@@ -36,6 +35,7 @@ public class map_editor : MonoBehaviour
         MapPath.text = "test_scene";
         path = "test_scene";
         oneTile = 0.64f;
+        OneTile.text = oneTile.ToString();
         //DESERIALIZE
 
         //READ TILES FROM TABLE
@@ -116,7 +116,8 @@ public class map_editor : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             MOVING = null;
-            GameObject.Find("moving").GetComponent<Text>().text = "";
+            if (GameObject.Find("moving") != null)
+                GameObject.Find("moving").GetComponent<Text>().text = "";
             Debug.Log(scene.Layer1.Count);
             Debug.Log(scene.Layer2.Count);
             Debug.Log(scene.Layer3.Count);
@@ -154,6 +155,7 @@ public class map_editor : MonoBehaviour
                                     GameObject.Find(nam).transform.position = new Vector3(worldPoint.x - worldPoint.x % oneTile + oneTile / 2, worldPoint.y - worldPoint.y % oneTile + oneTile / 2, 3);
                                     GameObject.Find(nam).transform.localScale = new Vector3(1, 1, 1);
                                     GameObject.Find(nam).tag = "Untagged";
+                                    //GameObject.Find(nam).GetComponent<BoxCollider2D>().isTrigger = true;
                                     scene.Layer1.Add(new GameItem(GameObject.Find(nam)));
                                     Debug.Log(GameObject.Find(nam).transform.position + "layer1" + new Vector3(worldPoint.x - worldPoint.x % oneTile + oneTile / 2, worldPoint.y - worldPoint.y % oneTile + oneTile / 2));
                                 }
@@ -204,13 +206,25 @@ public class map_editor : MonoBehaviour
                                 }
                             }
                             break;
+                        case "doors_hidden":
+                            {
+                                if (!scene.Layer2.Exists(p => p.position == new Vector3(worldPoint.x - worldPoint.x % oneTile + oneTile / 2, worldPoint.y - worldPoint.y % oneTile + oneTile / 2, 2)))
+                                {
+                                    GameObject.Instantiate(MOVING).name = nam;
+                                    GameObject.Find(nam).transform.position = new Vector3(worldPoint.x - worldPoint.x % oneTile + oneTile / 2, worldPoint.y - worldPoint.y % oneTile + oneTile / 2, 2);
+                                    GameObject.Find(nam).transform.localScale = new Vector3(1, 1, 1);
+                                    GameObject.Find(nam).tag = "Untagged";
+                                    scene.Layer2.Add(new NextScene(GameObject.Find(nam), parameter));
+                                }
+                            }
+                            break;
                     }
                 }
             }
         if (MOVING != null)
             GameObject.Find("moving").GetComponent<Text>().text = MOVING.name.Remove(MOVING.name.Length - 7) + new Vector2((worldPoint.x - worldPoint.x % oneTile + oneTile / 2) / oneTile + 0.5f, (worldPoint.y - worldPoint.y % oneTile + oneTile / 2) / oneTile + 0.5f);
         //REMOVE
-        if (Input.GetMouseButton(1) && hit.collider != null && hit.collider.tag != "editortool")
+        if (Input.GetMouseButton(1) && hit.collider != null && hit.collider.tag == "Untagged")
         {
             scene.Layer1.Remove(scene.Layer1.Find(p => p.Name == hit.collider.name));
             scene.Layer2.Remove(scene.Layer2.Find(p => p.Name == hit.collider.name));
@@ -294,35 +308,7 @@ public class map_editor : MonoBehaviour
 
     void Load()
     {
-        for (int i = 0; i < scene.Layer1.Count; i++)
-        {
-            Destroy(GameObject.Find(scene.Layer1[i].Name));
-        }
-        for (int i = 0; i < scene.Layer2.Count; i++)
-        {
-            Destroy(GameObject.Find(scene.Layer2[i].Name));
-        }
-        for (int i = 0; i < scene.Layer3.Count; i++)
-        {
-            Destroy(GameObject.Find(scene.Layer3[i].Name));
-        }
-        scene.Layer1 = scene.Layer2 = scene.Layer3 = new List<GameItem>();
-        XmlManager<List<GameItem>> xm = new XmlManager<List<GameItem>>();
-        scene.Layer1 = xm.Load("Assets/saves/" + path + "/layer1.xml");
-        for (int i = 0; i < scene.Layer1.Count; i++)
-        {
-            scene.Layer1[i].Load(ItemsList);
-        }
-        scene.Layer2 = xm.Load("Assets/saves/" + path + "/layer2.xml");
-        for (int i = 0; i < scene.Layer2.Count; i++)
-        {
-            scene.Layer2[i].Load(ItemsList);
-        }
-        scene.Layer3 = xm.Load("Assets/saves/" + path + "/layer3.xml");
-        for (int i = 0; i < scene.Layer3.Count; i++)
-        {
-            scene.Layer3[i].Load(ItemsList);
-        }
+        Scene_Controller.scene.Load(path);
     }
     void Save()
     {
@@ -347,7 +333,9 @@ public class map_editor : MonoBehaviour
         {
             Destroy(GameObject.Find(scene.Layer3[i].Name));
         }
-        scene = new Scene();
+        scene.Layer1 = new List<GameItem>();
+        scene.Layer2 = new List<GameItem>();
+        scene.Layer3 = new List<GameItem>();
     }
     void parameterChange()
     {

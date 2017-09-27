@@ -31,18 +31,45 @@ public class person : MonoBehaviour
     public GameObject PopUp;
     //sleep var
     public int timeleft = -1;
+    //only for saving
+    public Vector3 pos;
+    public string name;
+    public int popupstate
+    {
+        get
+        {
+            float before = popOpocity;
+            eu.Invoke(this);
+            if (before == popOpocity && popOpocity > 0.9f)
+                return 1;
+            else
+                if (before == popOpocity && popOpocity < 0.1f)
+                    return 0;
+                else
+                    if (before < popOpocity)
+                        return 1;
+                    else
+                        return 0;
+        }
+        set 
+        {
+            if (value == 1)
+                eu += new EveryUpdate(popUpShow);  
+        }
+    }
     void Start()
     {
         Inv = new Inventory();
-        Inv.AddItem(0, 4);
+        //Inv.AddItem(0, 4);
+        //Inv.AddItem(1, 2);
         acs = new action_scripts();
         acs.load(acsSource);
         speed = 0.25f;
         initialize = true;
         PopUp = this.transform.Find("pop-up").gameObject;
-        PopUp.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 0);
+        PopUp.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 255*popupstate);
         SceneName = "test_scene";
-
+        loadInv();
     }
 
     // Update is called once per frame
@@ -188,4 +215,116 @@ public class person : MonoBehaviour
     {
 
     }
+
+    public void LoadComp(SavePerson s)
+    {
+        this.Action_number = s.Action_number;
+        this.UpdateAct = s.UpdateAct;
+        this.SceneName = s.SceneName;
+        this.colliding = s.colliding;
+        this.speed = s.speed;
+        this.step = s.step;
+        this.ziel = s.ziel;
+        this.zielNumber = s.zielNumber;
+        this.initialize = s.initialize;
+        this.pos = s.pos;
+        this.popupstate = s.popupstate;
+        this.timeleft = s.timeleft;
+        this.resource = s.resource;
+        this.name = s.name;
+        
+    }
+
+    public void loadInv()
+    {
+        Inv.loadString(System.IO.File.ReadAllLines("Assets/saves/SaveGame/persons/" + name + "Inv.txt"));
+    }
+}
+
+public class SavePerson
+{
+    public int Action_number;
+    public bool UpdateAct;
+    public string SceneName;
+    public string resource;
+    public bool colliding;
+    //straight vars
+    public float speed;
+    public Vector2 step;
+    public int zielNumber;
+    public Vector2[] ziel = new Vector2[0];
+    public bool initialize;
+    public Vector3 pos;
+    public string name;
+    //Text_intfc
+    
+    //pop up vars
+    public int popupstate;
+    //sleep var
+    public int timeleft = -1;
+    public SavePerson()
+    {
+
+    }
+    public SavePerson(person p)
+    {
+        if(p.acs.actions[Action_number] == "#dialog")
+            Action_number = p.Action_number-1;
+        else
+            Action_number = p.Action_number;
+        UpdateAct = p.UpdateAct;
+        SceneName = p.SceneName;
+        colliding = p.colliding;
+        speed = p.speed;
+        step = p.step;
+        zielNumber = p.zielNumber;
+        ziel = p.ziel;
+        initialize = p.initialize;
+        pos = p.transform.position;
+        popupstate = p.popupstate;
+        timeleft = p.timeleft;
+        resource = p.resource;
+        name = p.transform.name;
+        System.IO.File.WriteAllLines("Assets/saves/SaveGame/persons/" + name + "Inv.txt", p.Inv.saveString());
+    }
+
+     public person LoadPerson()
+    {
+        person p = new person();
+        p.Action_number = Action_number;
+        p.UpdateAct = UpdateAct;
+        p.SceneName = SceneName;
+        p.colliding = colliding;
+        p.speed = speed;
+        p.step = step;
+        p.ziel = ziel;
+        p.zielNumber = zielNumber;
+        p.initialize = initialize;
+        p.pos = pos;
+        p.popupstate = popupstate;
+        p.timeleft = timeleft;
+        p.resource = resource;
+        p.name = name;
+        p.Inv.loadString(System.IO.File.ReadAllLines("Assets/saves/SaveGame/persons/" + name + "Inv.txt"));
+        return p;
+    }
+
+     public void LoadPerson(ref person p)
+     {
+         p.Action_number = Action_number;
+         p.UpdateAct = UpdateAct;
+         p.SceneName = SceneName;
+         p.colliding = colliding;
+         p.speed = speed;
+         p.step = step;
+         p.ziel = ziel;
+         p.zielNumber = zielNumber;
+         p.initialize = initialize;
+         p.pos = pos;
+         p.popupstate = popupstate;
+         p.timeleft = timeleft;
+         p.resource = resource;
+         p.name = name;
+         p.Inv.loadString(System.IO.File.ReadAllLines("Assets/saves/SaveGame/persons/" + name + "Inv.txt"));
+     }
 }

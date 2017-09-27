@@ -24,7 +24,10 @@ public class GameItem{
         if (Array.Find(ItemsList, (p => p.texture == Name.Split(';')[0])).colliding)
             GameObject.Find(Name).AddComponent<Collider2D>();
         else
-            UnityEngine.Object.Destroy(GameObject.Find(Name).GetComponent<Collider2D>());
+        {
+            GameObject.Find(Name).AddComponent<Collider2D>();
+            GameObject.Find(Name).GetComponent<Collider2D>().isTrigger = true;
+        }
         //Go.name = Name;
     }
     public void Start()

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfSavePerson xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SavePerson>
+    <Action_number>1</Action_number>
+    <UpdateAct>true</UpdateAct>
+    <SceneName>test_scene</SceneName>
+    <resource>test_NPC</resource>
+    <colliding>true</colliding>
+    <speed>0.25</speed>
+    <step>
+      <x>0</x>
+      <y>0</y>
+    </step>
+    <zielNumber>0</zielNumber>
+    <ziel />
+    <initialize>true</initialize>
+    <pos>
+      <x>0</x>
+      <y>0</y>
+      <z>0</z>
+    </pos>
+    <name>TESTnpc</name>
+    <popupstate>1</popupstate>
+    <timeleft>-1</timeleft>
+  </SavePerson>
+  <SavePerson>
+    <Action_number>1</Action_number>
+    <UpdateAct>true</UpdateAct>
+    <SceneName>test_scene</SceneName>
+    <resource>test_NPC</resource>
+    <colliding>false</colliding>
+    <speed>0.25</speed>
+    <step>
+      <x>0</x>
+      <y>0</y>
+    </step>
+    <zielNumber>0</zielNumber>
+    <ziel />
+    <initialize>true</initialize>
+    <pos>
+      <x>3</x>
+      <y>0</y>
+      <z>0</z>
+    </pos>
+    <name>HUNGRYnpc</name>
+    <popupstate>1</popupstate>
+    <timeleft>-1</timeleft>
+  </SavePerson>
+</ArrayOfSavePerson>

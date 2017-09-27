@@ -7,14 +7,8 @@ public struct InvIt{
     public float weight;
     public GameObject Resource;
     public bool Stackable;
+    public int posininv;
+    public string[] atributes;
     
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
 }
