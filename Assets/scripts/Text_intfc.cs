@@ -12,7 +12,7 @@ public class Text_intfc : MonoBehaviour {
 	void Start () {
         DC = new Dialog_controller();
         haveDialog = false;
-        this.off();
+        this.Off();
 	}
 	
 	// Update is called once per frame
@@ -41,10 +41,10 @@ public class Text_intfc : MonoBehaviour {
                                 if(parent.GetComponent<person>().Inv.Items.Exists(e => e.ID == Scene_Controller.ItemSheet.Items[int.Parse(DC.dialogue[DC.phrase].Split(':')[1])].ID))
                                 {
                                     GameObject.Find("player").GetComponent<SimpleCharacter>().Inv.TransferItems(parent.GetComponent<person>().Inv, int.Parse(DC.dialogue[DC.phrase].Split(':')[1]));
-                                    write(DC.dialogue[DC.phrase].Split(':')[2]);
+                                    Write(DC.dialogue[DC.phrase].Split(':')[2]);
                                 }
                                 else
-                                    write("I dont have any more.");
+                                    Write("I dont have any more.");
                                 GameObject.Find("player").GetComponent<SimpleCharacter>().Inv.DrawInv();
                                 //GameObject.Find("player").GetComponent<SimpleCharacter>().Inv.DrawAllInv();
                             }
@@ -54,10 +54,10 @@ public class Text_intfc : MonoBehaviour {
                                 if (GameObject.Find("player").GetComponent<SimpleCharacter>().Inv.Items.Exists((e => e.ID == Scene_Controller.ItemSheet.Items[int.Parse(DC.dialogue[DC.phrase].Split(':')[1])].ID)))
                                 {
                                     parent.GetComponent<person>().Inv.TransferItems(GameObject.Find("player").GetComponent<SimpleCharacter>().Inv, int.Parse(DC.dialogue[DC.phrase].Split(':')[1]));
-                                    write(DC.dialogue[DC.phrase].Split(':')[2]);
+                                    Write(DC.dialogue[DC.phrase].Split(':')[2]);
                                 }
                                 else
-                                    write("I dont have any more.");
+                                    Write("I dont have any more.");
                                 GameObject.Find("player").GetComponent<SimpleCharacter>().Inv.DrawInv();
                                 GameObject.Find("player").GetComponent<SimpleCharacter>().Inv.DrawAllInv();
                             }
@@ -65,18 +65,18 @@ public class Text_intfc : MonoBehaviour {
                     }
                 }
                 else
-                    write(DC.dialogue[DC.phrase].Remove(0,2));
+                    Write(DC.dialogue[DC.phrase].Remove(0,2));
             }
             
         }
 	}
 
-    public void write(string text)
+    public void Write(string text)
     {
         gameObject.SetActive(true);
         gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().text = text;
     }
-    public void off()
+    public void Off()
     {
         gameObject.SetActive(false);
         gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().text = "";
@@ -88,6 +88,6 @@ public class Text_intfc : MonoBehaviour {
         Scene_Controller.Freze = true;
         haveDialog = true;
         DC.Load(path);
-        write(DC.dialogue[0]);
+        Write(DC.dialogue[0]);
     }
 }
