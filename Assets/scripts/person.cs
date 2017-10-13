@@ -68,7 +68,6 @@ public class person : MonoBehaviour
         initialize = true;
         PopUp = this.transform.Find("pop-up").gameObject;
         PopUp.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 255*popupstate);
-        SceneName = "test_scene";
         loadInv();
     }
 
@@ -77,7 +76,9 @@ public class person : MonoBehaviour
     {
         eu.Invoke(this);
         if (UpdateAct)
+        {
             act();
+        }
     }
 
 
@@ -132,13 +133,29 @@ public class person : MonoBehaviour
                     {
                         if (colliding && Input.GetKeyDown(KeyCode.E))
                         {
-                            txt.Dialog(acs.parameters[Action_number][0],gameObject as GameObject);
+                            Scene_Controller.Freze = true;
+                            txt.Dialog(acs.parameters[Action_number][0], gameObject as GameObject);
                             eu += new EveryUpdate(popUpHide);
                             Action_number++;
                         }
                     }
                     break;
+                case "#forceDialog":
+                    {
+                        txt.Dialog(acs.parameters[Action_number][0], gameObject as GameObject);
+                        Action_number++;
+                    }
+                    break;
+                case "#changeScene":
+                    {
+                        SceneName = acs.parameters[Action_number][0];
+                        pos = new Vector2(float.Parse(acs.parameters[Action_number][1]), float.Parse(acs.parameters[Action_number][2]));
+                        Action_number++;
+                    }
+                    break;
                 case "end":
+                    break;
+                default:
                     break;
             }
         }

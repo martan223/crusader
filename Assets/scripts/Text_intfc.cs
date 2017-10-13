@@ -25,6 +25,7 @@ public class Text_intfc : MonoBehaviour {
             {
                 haveDialog = false;
                 Scene_Controller.pause = false;
+                Scene_Controller.Freze = false;
                 gameObject.SetActive(false);
             }
             else
@@ -84,6 +85,7 @@ public class Text_intfc : MonoBehaviour {
     {
         parent = father;
         Scene_Controller.pause = true;
+        Scene_Controller.Freze = true;
         haveDialog = true;
         DC.Load(path);
         write(DC.dialogue[0]);

@@ -3,7 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Scene_Controller : MonoBehaviour {
+public class Scene_Controller : MonoBehaviour
+{
 
     public static Item[] ItemsList;
     public static Inventory ItemSheet;
@@ -14,8 +15,9 @@ public class Scene_Controller : MonoBehaviour {
     public static GameObject player;
     public static string SceneName;
     public static bool Freze;
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         player = GameObject.Find("player");
         string[] q = System.IO.File.ReadAllLines(@"Assets/saves/items_list.csv");
         ItemsList = new Item[q.Length - 1];
@@ -32,20 +34,22 @@ public class Scene_Controller : MonoBehaviour {
             if (s == 1.ToString())
                 ItemsList[i - 1].movable = true;
 
-        } 
+        }
+        //uvodni scena
         scene = new Scene();
-        scrtransition = new FadeOut(10f, 0.1F, "test_scene",true, new Vector2());
+        scrtransition = new FadeOut(10f, 10F, "cb_home", true, new Vector2(3, 4));
         transition = true;
         ItemSheet = new Inventory();
         ItemSheet.LoadItems();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		if(transition)
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (transition)
         {
             GameObject.Find("Main Camera").GetComponent<GUITexture>().pixelInset = new Rect(new Vector2(-GameObject.Find("Main Camera").GetComponent<Camera>().pixelWidth * GameObject.Find("Main Camera").transform.position.x, -GameObject.Find("Main Camera").GetComponent<Camera>().pixelHeight * GameObject.Find("Main Camera").transform.position.y), new Vector2(1000, 1000));
             scrtransition.Update();
         }
-	}
+    }
 }

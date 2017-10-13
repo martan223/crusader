@@ -11,7 +11,7 @@ public class SimpleCharacter : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Scene_Controller.Freze || !Scene_Controller.transition)
+        if (!Scene_Controller.Freze && !Scene_Controller.transition)
         {
             if (Input.GetKey(KeyCode.W))
                 transform.position = new Vector3(transform.position.x, transform.position.y + 0.1f);

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "crusader.CSharp", "crusader.CSharp.csproj", "{B8F6C74C-D730-D39A-AC18-54B8585544B2}"
+# Visual Studio 2017
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "crusader", "crusader.csproj", "{A88DC77A-6B13-92C2-76F4-FEDB3E84D417}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,10 +9,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B8F6C74C-D730-D39A-AC18-54B8585544B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B8F6C74C-D730-D39A-AC18-54B8585544B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B8F6C74C-D730-D39A-AC18-54B8585544B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B8F6C74C-D730-D39A-AC18-54B8585544B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A88DC77A-6B13-92C2-76F4-FEDB3E84D417}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A88DC77A-6B13-92C2-76F4-FEDB3E84D417}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A88DC77A-6B13-92C2-76F4-FEDB3E84D417}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A88DC77A-6B13-92C2-76F4-FEDB3E84D417}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

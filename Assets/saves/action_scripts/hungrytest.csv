@@ -1,3 +1,3 @@
-popupSHOW;
-#dialog;wanna
-again;
+#changeScene;cb_home;3;4
+#changeScene;cb_home;3;4
+#forceDialog;StDial;;
