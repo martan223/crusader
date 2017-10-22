@@ -187,3 +187,5 @@ FakesAssemblies/
 GeneratedArtifacts/
 _Pvt_Extensions/
 ModelManifest.xml
+/.vs/crusader/v15/sqlite3/db.lock
+/.vs/crusader/v15/Server/sqlite3/db.lock

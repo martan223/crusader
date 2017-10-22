@@ -24,3 +24,8 @@ floor;floor;0;1;false;false
 chest1;chest1;0;2;true;false
 chest2;chest2;0;2;true;false
 doors_hidden;doors_hidden;0;2;true;true
+bowl_empty;bowl;0;2;false;false
+bowl_full;bowlFood;0;2;false;false
+table1;table1;0;2;true;false
+table2;table2;0;2;true;false
+table3;table3;0;2;true;false

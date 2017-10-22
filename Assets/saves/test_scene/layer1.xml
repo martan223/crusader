@@ -133,19 +133,6 @@
   <GameItem>
     <position>
       <x>6.72</x>
-      <y>0.96</y>
-      <z>3</z>
-    </position>
-    <scale>
-      <x>1</x>
-      <y>1</y>
-      <z>1</z>
-    </scale>
-    <Name>grass;(11.0, 2.0)</Name>
-  </GameItem>
-  <GameItem>
-    <position>
-      <x>6.72</x>
       <y>0.32</y>
       <z>3</z>
     </position>
@@ -1078,5 +1065,18 @@
       <z>1</z>
     </scale>
     <Name>grass;(18.0, 7.0)</Name>
+  </GameItem>
+  <GameItem>
+    <position>
+      <x>6.72</x>
+      <y>0.96</y>
+      <z>3</z>
+    </position>
+    <scale>
+      <x>1</x>
+      <y>1</y>
+      <z>1</z>
+    </scale>
+    <Name>grass;(11.0, 2.0)</Name>
   </GameItem>
 </ArrayOfGameItem>

@@ -68,6 +68,7 @@ public class person : MonoBehaviour
         initialize = true;
         PopUp = this.transform.Find("pop-up").gameObject;
         PopUp.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 255*popupstate);
+        name = this.gameObject.name;
         loadInv();
     }
 
@@ -149,7 +150,7 @@ public class person : MonoBehaviour
                 case "#changeScene":
                     {
                         SceneName = acs.parameters[Action_number][0];
-                        pos = new Vector2(float.Parse(acs.parameters[Action_number][1]), float.Parse(acs.parameters[Action_number][2]));
+                        transform.position = new Vector2(float.Parse(acs.parameters[Action_number][1]), float.Parse(acs.parameters[Action_number][2]))*0.64f;
                         Action_number++;
                     }
                     break;
@@ -273,6 +274,7 @@ public class SavePerson
     public bool initialize;
     public Vector3 pos;
     public string name;
+    public string acsSource;
     //Text_intfc
     
     //pop up vars
@@ -302,6 +304,7 @@ public class SavePerson
         timeleft = p.timeleft;
         resource = p.resource;
         name = p.transform.name;
+        acsSource = p.acsSource;
         System.IO.File.WriteAllLines("Assets/saves/SaveGame/persons/" + name + "Inv.txt", p.Inv.saveString());
     }
 
@@ -322,6 +325,7 @@ public class SavePerson
         p.timeleft = timeleft;
         p.resource = resource;
         p.name = name;
+        p.acsSource = acsSource;
         p.Inv.loadString(System.IO.File.ReadAllLines("Assets/saves/SaveGame/persons/" + name + "Inv.txt"));
         return p;
     }
@@ -342,6 +346,7 @@ public class SavePerson
          p.timeleft = timeleft;
          p.resource = resource;
          p.name = name;
-         p.Inv.loadString(System.IO.File.ReadAllLines("Assets/saves/SaveGame/persons/" + name + "Inv.txt"));
+        p.acsSource = acsSource;
+        p.Inv.loadString(System.IO.File.ReadAllLines("Assets/saves/SaveGame/persons/" + name + "Inv.txt"));
      }
 }
