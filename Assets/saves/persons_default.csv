@@ -1,3 +1,1 @@
-name;resource;actNMBR;acs;posX;posY;scene
-TESTnpc;test_NPC;0;Assets/saves/action_scripts/popuptest.csv;0;0;test_scene
-HUNGRYnpc;test_NPC;0;Assets/saves/action_scripts/hungrytest.csv;4;6;cb_home
+name;resource;lives;acs

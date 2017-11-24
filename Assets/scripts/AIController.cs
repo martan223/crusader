@@ -6,6 +6,7 @@ using System.IO;
 
 public class AIController : MonoBehaviour
 {
+    public List<person> SamplePersons = new List<person>();
     public List<person> persons = new List<person>();
     public person AddPerson;
     public bool Addperson;
@@ -16,45 +17,46 @@ public class AIController : MonoBehaviour
         List<SavePerson> lp = new List<SavePerson>();
         XmlManager<List<SavePerson>> xm = new XmlManager<List<SavePerson>>();
         Textbckgrnd = GameObject.Find("text_bckgrnd").GetComponent<Text_intfc>();
-        if (File.Exists("Assets/saves/SaveGame/persons.xml"))
-        {
-            lp = xm.Load("Assets/saves/SaveGame/persons.xml");
-            Load(lp);
-        }
-        else
-        {
-            Load();
-        }
+        LoadSamplePersons();
+        //if (File.Exists("Assets/saves/SaveGame/persons.xml"))
+        //{
+        //    lp = xm.Load("Assets/saves/SaveGame/persons.xml");
+        //    Load(lp);
+        //}
+        //else
+        //{
+        //    Load();
+        //}
          
     }
 
     void Load()
     {
-        //string[] q = System.IO.File.ReadAllLines(@"Assets/saves/persons_default.csv");
-        //for (int i = 1; i < q.Length; i++)
-        //{
-        //    string s = q[i];
-        //    //Debug.Log(s.Split(';')[0]);
+        string[] q = System.IO.File.ReadAllLines(@"Assets/saves/persons_default.csv");
+        for (int i = 1; i < q.Length; i++)
+        {
+            string s = q[i];
+            //Debug.Log(s.Split(';')[0]);
 
-        //    //Debug.Log(s.Split(';')[2]);
-        //    //Debug.Log(s.Split(';')[3]);
-        //    //Debug.Log(s.Split(';')[4]);
-        //    //Debug.Log(s.Split(';')[5]);
-        //    Instantiate(Resources.Load(s.Split(';')[1])).name = s.Split(';')[0];
-        //    persons.Add(GameObject.Find(s.Split(';')[0]).AddComponent<person>());
-        //    //persons[i].name = s.Split(';')[0];
-        //    //persons[i].resource = s.Split(';')[1];
-        //    persons[i - 1].Action_number = int.Parse(s.Split(';')[2]);
-        //    persons[i - 1].acsSource = s.Split(';')[3];
-        //    persons[i - 1].resource = s.Split(';')[1];
-        //    persons[i - 1].transform.position = new Vector3(float.Parse(s.Split(';')[4]), float.Parse(s.Split(';')[5]));
-        //    persons[i - 1].UpdateAct = true;
-        //    persons[i - 1].transform.SetParent(GameObject.Find("AIController").transform);
-        //    persons[i - 1].gameObject.SetActive(true);
-        //    persons[i - 1].GetComponent<person>().txt = Textbckgrnd;
-        //    persons[i - 1].SceneName = s.Split(';')[6];
-        //}
-        ////GameObject.Find("text_bckgrnd").GetComponent<Text_intfc>().off();
+            //Debug.Log(s.Split(';')[2]);
+            //Debug.Log(s.Split(';')[3]);
+            //Debug.Log(s.Split(';')[4]);
+            //Debug.Log(s.Split(';')[5]);
+            Instantiate(Resources.Load(s.Split(';')[1])).name = s.Split(';')[0];
+            persons.Add(GameObject.Find(s.Split(';')[0]).AddComponent<person>());
+            //persons[i].name = s.Split(';')[0];
+            //persons[i].resource = s.Split(';')[1];
+            persons[i - 1].Action_number = int.Parse(s.Split(';')[2]);
+            persons[i - 1].acsSource = s.Split(';')[3];
+            persons[i - 1].resource = s.Split(';')[1];
+            persons[i - 1].transform.position = new Vector3(float.Parse(s.Split(';')[4]), float.Parse(s.Split(';')[5]));
+            persons[i - 1].UpdateAct = true;
+            persons[i - 1].transform.SetParent(GameObject.Find("AIController").transform);
+            persons[i - 1].gameObject.SetActive(true);
+            persons[i - 1].GetComponent<person>().txt = Textbckgrnd;
+            persons[i - 1].SceneName = s.Split(';')[6];
+        }
+        //GameObject.Find("text_bckgrnd").GetComponent<Text_intfc>().off();
     }
     public void Load(List<SavePerson> lst)
     {
@@ -74,6 +76,33 @@ public class AIController : MonoBehaviour
 
             //persons[persons.Count - 1].Inv = new Inventory();
             //persons[persons.Count - 1].Inv.loadString(System.IO.File.ReadAllLines("Assets/saves/SaveGame/persons/" + persons[persons.Count - 1].name + "Inv.txt"));
+        }
+    }
+    void LoadSamplePersons()
+    {
+        string[] q = System.IO.File.ReadAllLines(@"Assets/saves/persons_default.csv");
+        for (int i = 1; i < q.Length; i++)
+        {
+            string s = q[i];
+            //Debug.Log(s.Split(';')[0]);
+
+            //Debug.Log(s.Split(';')[2]);
+            //Debug.Log(s.Split(';')[3]);
+            //Debug.Log(s.Split(';')[4]);
+            //Debug.Log(s.Split(';')[5]);
+            Instantiate(Resources.Load(s.Split(';')[1])).name = s.Split(';')[0];
+            persons.Add(GameObject.Find(s.Split(';')[0]).AddComponent<person>());
+            //persons[i].name = s.Split(';')[0];
+            //persons[i].resource = s.Split(';')[1];
+            //persons[i - 1].Action_number = int.Parse(s.Split(';')[2]);
+            persons[i - 1].acsSource = s.Split(';')[3];
+            persons[i - 1].resource = s.Split(';')[1];
+            //persons[i - 1].transform.position = new Vector3(float.Parse(s.Split(';')[4]), float.Parse(s.Split(';')[5]));
+            persons[i - 1].UpdateAct = true;
+            persons[i - 1].transform.SetParent(GameObject.Find("AIController").transform);
+            persons[i - 1].gameObject.SetActive(true);
+            persons[i - 1].GetComponent<person>().txt = Textbckgrnd;
+            persons[i - 1].SceneName = "cb_home";
         }
     }
     // Update is called once per frame

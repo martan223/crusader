@@ -1,3 +1,4 @@
 Id;Resource;Weight;Stackable;Atributes
 0;sword;1;false;SAWeapon,delete
 1;shield;1;false;delete
+2;bugNet;1;false;

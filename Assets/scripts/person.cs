@@ -13,6 +13,7 @@ public class person : MonoBehaviour
     public string SceneName;
     public string resource;
     public bool colliding;
+    public static bool collidedLF;
     //straight vars
     public float speed;
     public Vector2 step;
@@ -28,12 +29,16 @@ public class person : MonoBehaviour
     public Text_intfc txt;
     //pop up vars
     public static float popOpocity;
-    public GameObject PopUp;
+    public static float popscale;
+    public GameObject PopUp, Pop;
     //sleep var
     public int timeleft = -1;
     //only for saving
     public Vector3 pos;
     public string name;
+    //animals values
+    public bool runaway;
+
     public int popupstate
     {
         get
@@ -67,6 +72,7 @@ public class person : MonoBehaviour
         speed = 0.25f;
         initialize = true;
         PopUp = this.transform.Find("pop-up").gameObject;
+        Pop = this.transform.Find("pop").gameObject;
         PopUp.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 255*popupstate);
         name = this.gameObject.name;
         loadInv();
@@ -120,6 +126,22 @@ public class person : MonoBehaviour
                     eu += new EveryUpdate(popUpShow);
                     Action_number++;
                     break;
+                case "popHIDE":
+                    popscale = 1;
+                    Debug.Log("added   " + eu.GetInvocationList().Length);
+                    eu += new EveryUpdate(popHide);
+                    Action_number++;
+                    break;
+                case "#changePOP":
+                    Debug.Log("Assets/sprites/" + acs.parameters[Action_number][0] + ".png");
+                    Pop.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(acs.parameters[Action_number][0]);
+                    Action_number++;
+                    break;
+                case "popSHOW":
+                    popscale= 0;
+                    eu += new EveryUpdate(popShow);
+                    Action_number++;
+                    break;
                 case "#sleep":
                     if (timeleft == -1)
                         timeleft = int.Parse(acs.parameters[Action_number][0]);
@@ -129,6 +151,19 @@ public class person : MonoBehaviour
                         Action_number++;
                         timeleft = -1;
                     }
+                    break;
+                case "#randomSleep":
+                    if (timeleft == -1)
+                        timeleft = (int)Random.Range(float.Parse(acs.parameters[Action_number][0]), float.Parse(acs.parameters[Action_number][1]));
+                    timeleft--;
+                    if (timeleft == 0)
+                    {
+                        Action_number++;
+                        timeleft = -1;
+                    }
+                    break;
+                case "#randomStraight":
+                    randomStraight(float.Parse(acs.parameters[Action_number][0]), float.Parse(acs.parameters[Action_number][1]));
                     break;
                 case "#dialog":
                     {
@@ -156,13 +191,16 @@ public class person : MonoBehaviour
                     break;
                 case "end":
                     break;
+                case "#GoTo":
+                    Action_number = int.Parse(acs.parameters[Action_number][0]);
+                    break;
                 default:
                     break;
             }
         }
     }
 
-
+    // multiple stops
     public void walkStraight(string path)
     {
         if (initialize)
@@ -208,7 +246,43 @@ public class person : MonoBehaviour
         //    this.transform.position = new Vector2(this.transform.position.x, this.transform.position.y - step.y);
         //else this.transform.position = new Vector2(this.transform.position.x, this.transform.position.y);
     }
+    // only one stop
+    public void walkStraight(Vector2 pos)
+    {
+        if (initialize)
+        {
+            float totalsteps = Mathf.CeilToInt(Mathf.Sqrt((this.transform.position.x - ziel[zielNumber].x) * (this.transform.position.x - ziel[zielNumber].x) + (this.transform.position.y - ziel[zielNumber].y) * (this.transform.position.y - ziel[zielNumber].y)) / speed);
+            step = new Vector2(((ziel[zielNumber].x - this.transform.position.x)) / totalsteps * speed, ((ziel[zielNumber].y - this.transform.position.y)) / totalsteps * speed);
+            initialize = false;
+        }
+        if (pos == (Vector2)this.transform.position)
+        {
+            step = new Vector2(0, 0);
+            Action_number++;
+        }
+        this.transform.position = new Vector2(this.transform.position.x + step.x, this.transform.position.y + step.y);
+    }
 
+    // one random walk
+    public void randomStraight(float min, float max)
+    {
+        if (initialize)
+        {
+            ziel = new Vector2[1];
+            float distance = Random.Range(min, max);
+            float rotation = Random.Range(0, 0.5f*Mathf.PI);
+            ziel[0] = new Vector2((Mathf.Cos(rotation) * distance)-((Mathf.Cos(rotation) * distance)%0.64f), (Mathf.Sin(rotation) * distance)-((Mathf.Sin(rotation) * distance) % 0.64f));
+            float totalsteps = Mathf.CeilToInt(Mathf.Sqrt((this.transform.position.x - ziel[0].x) * (this.transform.position.x - ziel[0].x) + (this.transform.position.y - ziel[0].y) * (this.transform.position.y - ziel[0].y)) / speed);
+            step = new Vector2(((ziel[0].x - this.transform.position.x)) / totalsteps * speed, ((ziel[0].y - this.transform.position.y)) / totalsteps * speed);
+            initialize = false;
+        }
+        if (ziel[0]== (Vector2)this.transform.position)
+        {
+            step = new Vector2(0, 0);
+            Action_number++;
+        }
+        this.transform.position = new Vector2(this.transform.position.x + step.x, this.transform.position.y + step.y);
+    }
     public static void popUpHide(person p)
     {
         //Debug.Log(popOpocity);
@@ -227,6 +301,34 @@ public class person : MonoBehaviour
         if (popOpocity > 1)
         {
             p.eu -= new EveryUpdate(popUpShow);
+        }
+    }
+
+    private void Person_eu(person p)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public static void popHide(person p)
+    {
+        //Debug.Log(popOpocity);
+        popscale -= 0.1f;
+        p.Pop.transform.localScale = new Vector3(popscale,popscale);
+        p.Pop.transform.position = new Vector3(popscale*0.1f, popscale*0.64f);
+        if (popscale < 0)
+        {
+            p.eu -= new EveryUpdate(popHide);
+        }
+    }
+
+    public static void popShow(person p)
+    {
+        popscale += 0.1f;
+        p.Pop.GetComponent<Transform>().localScale = new Vector3(popscale, popscale);
+        p.Pop.GetComponent<Transform>().position = new Vector3(popscale * 0.1f, popscale * 0.64f);
+        if (popscale > 1)
+        {
+            p.eu -= new EveryUpdate(popShow);
         }
     }
     public static void none(person p)

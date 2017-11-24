@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class chcicken : MonoBehaviour{
-    
-    GameObject person;
+public class Animal : MonoBehaviour {
+
+    public float speed;
 	// Use this for initialization
 	void Start () {
 		
@@ -14,4 +14,9 @@ public class chcicken : MonoBehaviour{
 	void Update () {
 		
 	}
+
+    public virtual string Save()
+    {
+        return "";
+    }
 }

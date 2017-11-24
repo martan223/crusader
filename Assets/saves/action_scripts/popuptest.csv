@@ -1,3 +1,11 @@
-popupSHOW;
-#dialog;test
+popSHOW;
+#sleep;30
+popHIDE;
+#sleep;30
+#changePOP;popQM
+popSHOW;
+#sleep;30
+popHIDE;
+#sleep;30
+#changePOP;popEgg
 again;
