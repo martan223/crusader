@@ -64,10 +64,12 @@ public class InvAmenu : MonoBehaviour {
                         o = player.Items.IndexOf(i);
                         s = i.atributes.Clone() as string[];
                         s[Array.FindIndex<string>(s, p => p == "RMVWeapon")] = "SAWeapon";
-                        i.atributes = s;
-                        player.Items[posininv] = i;
-                        player.Items.RemoveAt(o);
-                        player.Items.Insert(o, i);
+                        InvIt atr = player.Items[o];
+                        atr.atributes = s;
+                        player.Items[o] = atr;
+                        //player.Items[posininv] = i;
+                        //player.Items.RemoveAt(o);
+                        //player.Items.Insert(o, i);
                         DestroyImmediate(GameObject.Find("weapon(Clone)"));
                     }
                     

@@ -15,6 +15,8 @@ public class Scene_Controller : MonoBehaviour
     public static GameObject player;
     public static string SceneName;
     public static bool Freze;
+    public static RaycastHit2D[] hit;
+
     // Use this for initialization
     void Start()
     {
@@ -46,6 +48,8 @@ public class Scene_Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Vector2 worldPoint = new Vector2((float)(Camera.main.ScreenToWorldPoint(Input.mousePosition).x), (float)(Camera.main.ScreenToWorldPoint(Input.mousePosition).y/* - (Camera.main.ScreenToWorldPoint(Input.mousePosition).y % oneTile + oneTile / 2)*/));
+        hit = Physics2D.RaycastAll(worldPoint, Vector2.zero);
         if (transition)
         {
             GameObject.Find("Main Camera").GetComponent<GUITexture>().pixelInset = new Rect(new Vector2(-GameObject.Find("Main Camera").GetComponent<Camera>().pixelWidth * GameObject.Find("Main Camera").transform.position.x, -GameObject.Find("Main Camera").GetComponent<Camera>().pixelHeight * GameObject.Find("Main Camera").transform.position.y), new Vector2(1000, 1000));

@@ -27,6 +27,13 @@ public class chicken : Animal{
 	
 	// Update is called once per frame
 	void Update () {
+        if (Input.GetMouseButtonDown(0) && System.Array.Exists(Scene_Controller.hit, p => p.transform == this.transform && GameObject.Find("Inventory").GetComponent<InvAmenu>().weapon.ID == 2))
+            {
+                GameObject.Find("player").GetComponent<SimpleCharacter>().Inv.AddItem(3);
+            GameObject.Find("player").GetComponent<SimpleCharacter>().Inv.DrawInv();
+                DestroyImmediate(this.gameObject);
+
+            }
 		if(triggered)
         {
             oneStep = new Vector2((GameObject.Find("player").transform.position.x-transform.position.x)*speed/10, (GameObject.Find("player").transform.position.y - transform.position.y)*speed/10);

@@ -7,6 +7,8 @@ public class SimpleCharacter : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         Inv = new Inventory();
+        Inv.loadString(System.IO.File.ReadAllLines(@"Assets/saves/SaveGame/persons/playerInv.txt"));
+        Inv.DrawInv();
     }
 	
 	// Update is called once per frame
