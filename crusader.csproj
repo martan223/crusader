@@ -7,17 +7,19 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{A88DC77A-6B13-92C2-76F4-FEDB3E84D417}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <AssemblyName>Assembly-CSharp.dll</AssemblyName>
+    <AssemblyName>Assembly-CSharp</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.6.3p1</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -87,7 +89,7 @@
     <Compile Include="Assets\scripts\FadeIn_flash.cs" />
     <Compile Include="Assets\scripts\FadeOut.cs" />
     <Compile Include="Assets\scripts\FadeOut_flash.cs" />
-    <Compile Include="Assets\scripts\FenceEditor.cs" />
+    <Compile Include="Assets\scripts\Fence.cs" />
     <Compile Include="Assets\scripts\FileManager.cs" />
     <Compile Include="Assets\scripts\GameItem.cs" />
     <Compile Include="Assets\scripts\InvAmenu.cs" />
@@ -106,6 +108,7 @@
     <Compile Include="Assets\scripts\XmlManager.cs" />
     <Compile Include="Assets\scripts\action_scripts.cs" />
     <Compile Include="Assets\scripts\chicken.cs" />
+    <Compile Include="Assets\scripts\fence_controller.cs" />
     <Compile Include="Assets\scripts\map_editor.cs" />
     <Compile Include="Assets\scripts\person.cs" />
     <Compile Include="Assets\scripts\trigger.cs" />
