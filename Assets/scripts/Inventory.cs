@@ -92,7 +92,10 @@ public class Inventory : MonoBehaviour {
                 GameObject.Find("weapon(Clone)").transform.GetComponent<SpriteRenderer>().sortingOrder = 1;
                 GameObject.Find("weapon(Clone)").transform.localPosition = new Vector3();
             }
-
+            if (Array.Exists<string>(Items[i].atributes, s => s == "deactive"))
+            {
+                GameObject.Find("Inventory").GetComponent<InvAmenu>().Background.transform.position = GameObject.Find("box" + (Items[i].posininv)).transform.position;
+            }
             pos++;
         }
     }

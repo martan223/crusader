@@ -7,16 +7,23 @@ using UnityEngine.UI;
 public class InvAmenu : MonoBehaviour {
     bool active;
     RaycastHit2D hit;
-    public InvIt head, body, legs, weapon;
+    public InvIt head, body, legs, weapon, activ;
     Inventory playersinv;
     int posininv;
+    public GameObject Background;
 	// Use this for initialization
 	void Start () {
 	}
 	
 	// Update is called once per frame
 	void Update () {
+        
         hit = Physics2D.Raycast(new Vector2((float)(Camera.main.ScreenToWorldPoint(Input.mousePosition).x), (float)(Camera.main.ScreenToWorldPoint(Input.mousePosition).y)), Vector2.zero);
+        //place chicken
+        if (Input.GetMouseButtonDown(0))
+        {
+            placeIt();
+        }
         if (hit.collider != null && hit.collider.tag == "InvBox" && Input.GetMouseButtonDown(1) && !active)
         {
             if (hit.collider.transform.childCount > 1)
@@ -111,8 +118,48 @@ public class InvAmenu : MonoBehaviour {
                     Destroy(GameObject.Find("Casle(Clone)"));
                     weapon = new InvIt();
                     break;
+                case "active":
+                    Background.SetActive(true);
+                    Background.transform.position = GameObject.Find("box" + (posininv + 1).ToString()).transform.position;
+                    player = GameObject.Find("player").GetComponent<SimpleCharacter>().Inv;
+                    i = player.Items[posininv];
+                    activ = i;
+                    o = player.Items.IndexOf(i);
+                    s = i.atributes.Clone() as string[];
+                    s[Array.FindIndex<string>(s, p => p == "active")] = "deactive";
+                    i.atributes = s;
+                    player.Items[posininv] = i;
+                    player.Items.RemoveAt(o);
+                    player.Items.Insert(o, i);
+                    player.DrawInv();
+                    active = false;
+                    Destroy(GameObject.Find("Casle(Clone)"));
+                    break;
+                case "deactive":
+                    activ = new InvIt();
+                    Background.SetActive(false);
+                    player = GameObject.Find("player").GetComponent<SimpleCharacter>().Inv;
+                    i = player.Items[posininv];
+                    o = player.Items.IndexOf(i);
+                    s = i.atributes.Clone() as string[];
+                    s[Array.FindIndex<string>(s, p => p == "deactive")] = "active";
+                    i.atributes = s;
+                    player.Items[posininv] = i;
+                    player.Items.RemoveAt(o);
+                    player.Items.Insert(o, i);
+                    player.DrawInv();
+                    active = false;
+                    Destroy(GameObject.Find("Casle(Clone)"));
+                    break;
             }
-            
         }
 	}
+    void placeIt()
+    {
+        Instantiate(Resources.Load("chicken"));
+        Vector2 pos  = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x - Camera.main.ScreenToWorldPoint(Input.mousePosition).x % 0.64f + 0.64f / 2, Camera.main.ScreenToWorldPoint(Input.mousePosition).y - Camera.main.ScreenToWorldPoint(Input.mousePosition).y % 0.64f + 0.64f / 2);
+        GameObject.Find("chicken(Clone)").transform.position = pos;
+        GameObject.Find("chicken(Clone)").name = "chicken";
+
+    }
 }

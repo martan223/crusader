@@ -111,7 +111,7 @@ public class fence_controller : MonoBehaviour {
         {
             for (int y = 0; y < Mathf.Round((Mathf.Abs(f.Stops[0].y - f.Stops[2].y) - 0.64f) / 0.64f); y++)
             {
-                //InnerFields.Add(new Vector2(f.Stops[0].x + x * 0.64f + 0.64f, f.Stops[0].y + y * 0.64f + 0.64f));
+                f.InnerFields.Add(new Vector2(f.Stops[0].x + x * 0.64f + 0.64f, f.Stops[0].y + y * 0.64f + 0.64f));
             }
         }
         for (int x = 0; x < Mathf.Round((Mathf.Abs(f.Stops[0].x - f.Stops[2].x) - 0.64f) / 0.64f); x++)

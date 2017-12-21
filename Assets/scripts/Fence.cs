@@ -15,7 +15,7 @@ public class Fence : MonoBehaviour
     public List<Vector2> Stops;
     GameObject positionText;
     public bool closed;
-    public List<Vector2> InnerFields;
+    public List<Vector2> InnerFields = new List<Vector2>();
     public bool built = false;
     public GameObject editor;
     

@@ -23,6 +23,7 @@ public class chicken : Animal{
         RandMax = 12.8f;
         ActionNumber = 1;
         initialize = true;
+        ifFence();
 	}
 	
 	// Update is called once per frame
